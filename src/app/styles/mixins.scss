@@ -1,0 +1,15 @@
+@import "./colors";
+
+@mixin authorization() {
+  .header {
+    margin-bottom: 5%;
+    margin-right: 50%;
+    font-size: 120%;
+    color: $project-color;
+  }
+
+  .link {
+    margin-top: 5%;
+    color: $project-color;
+  }
+}

@@ -1,16 +1,16 @@
 import {NgModule} from "@angular/core";
-import {LoginPageComponent} from "./login-page.component";
+import {RegistrationPageComponent} from "./registration-page.component";
 import {RouterModule} from "@angular/router";
 import {MaterialModule} from "../../shared/material.module";
 import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  declarations: [LoginPageComponent],
+  declarations: [RegistrationPageComponent],
   imports: [
     MaterialModule,
-    RouterModule.forChild([{path: '**', component: LoginPageComponent}]),
+    RouterModule.forChild([{path: '**', component: RegistrationPageComponent}]),
     FormsModule
   ]
 })
-export class LoginPageModule {
+export class RegistrationPageModule {
 }

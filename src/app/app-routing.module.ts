@@ -5,6 +5,13 @@ const routes: Routes = [
   {
     path: "login",
     loadChildren: () => import("./pages/login/login-page.module").then(module => module.LoginPageModule)
+  },{
+    path: "registration",
+    loadChildren: () => import("./pages/registration/registration-page.module").then(module => module.RegistrationPageModule)
+  },
+  {
+    path: "",
+    loadChildren: () => import("./pages/main/main-page.module").then(module => module.MainPageModule)
   }
 ];
 

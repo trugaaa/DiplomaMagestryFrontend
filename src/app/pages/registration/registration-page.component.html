@@ -1,0 +1,27 @@
+<div class="registration">
+  <span class="header">Sign up</span>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="username">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="password">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Confirm password</mat-label>
+    <input matInput [(ngModel)]="confirmPassword">
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary" (click)="onRegistration()">Sign Up</button>
+
+  <a mat-button class="link" href="/login">Has account? Sign In</a>
+</div>
