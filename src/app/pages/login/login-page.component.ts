@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthApiService} from "../../services/auth-api.service";
+import {Login} from "../../models/authorization";
 
 @Component({
   templateUrl: "login-page.component.html",
@@ -14,10 +15,12 @@ export class LoginPageComponent {
   }
 
   onLogin() {
-    this.authApiService.login(this.username, this.password).subscribe(response => {
-      response.token
+    this.authApiService.login({userName: this.username, password: this.password}).subscribe(response => {
+      this.router.navigate([""])
+      console.log(response.token)
     }, error => {
       if (error.statusCode) {
+        console.log(error.statusCode)
       }
     })
   }
