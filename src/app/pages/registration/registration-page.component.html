@@ -1,24 +1,41 @@
-<div class="registration">
+<div class="registration" [formGroup]="registrationForm">
   <span class="header">Sign up</span>
 
   <mat-form-field appearance="fill">
     <mat-label>Username</mat-label>
-    <input matInput [(ngModel)]="username">
+    <input matInput formControlName="username">
+    <mat-error *ngIf="registrationForm.controls['username'].hasError('required')">
+      Username is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="email">
+    <input matInput formControlName="email">
+    <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="registrationForm.controls['email'].hasError('email')">
+      Incorrect email format
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]="password">
+    <input matInput formControlName="password">
+    <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">Password is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="registrationForm.controls['password'].errors?.pattern">Password is <strong>incorrect</strong> it
+      should contain at least 1 uppercase, 1 lowercase letters and 1 digital. Password length should be 8 symbols.
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Confirm password</mat-label>
-    <input matInput [(ngModel)]="confirmPassword">
+    <input matInput formControlName="confirmPassword">
+    <mat-error *ngIf="registrationForm.hasError('matching')">
+      Passwords <strong>do not match</strong>
+    </mat-error>
   </mat-form-field>
 
   <button mat-stroked-button color="primary" (click)="onRegistration()">Sign Up</button>

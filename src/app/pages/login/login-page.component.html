@@ -1,17 +1,25 @@
-<div class="login">
+<div class="login" [formGroup]="loginForm">
   <span class="header">Sign in</span>
 
   <mat-form-field appearance="fill">
     <mat-label>Username/Email</mat-label>
-    <input matInput [(ngModel)]="username">
+    <input formControlName="username" matInput>
+    <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+      Username is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]="password">
+    <input formControlName="password" matInput>
+    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
-  <button mat-stroked-button color="primary" (click)="onLogin()">Sign In</button>
+  <button [disabled]="!loginForm.valid" mat-stroked-button color="primary"
+          (click)="onLogin()">Sign In
+  </button>
 
   <a mat-button class="link" href="/registration">Dont have account? Sign Up</a>
 </div>

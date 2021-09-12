@@ -6,21 +6,21 @@ import {Registration} from "../models/authorization";
 import {Login} from "../models/authorization";
 import {environment} from "../../environments/environment";
 import {httpOptions} from "./options";
+import {Url} from "./url";
 
 @Injectable({providedIn: "root"})
 export class AuthApiService {
   env = environment;
-  private service: string = "/api/user/"
 
   constructor(private httpClient: HttpClient) {
   }
 
   login(loginBody: Login): Observable<Token> {
     console.log(loginBody)
-    return this.httpClient.post(this.env.url + this.service + "login", loginBody, httpOptions);
+    return this.httpClient.post(this.env.url + Url.authService + Url.loginEndpoint, loginBody, httpOptions);
   }
 
   registration(registrationBody: Registration): Observable<any> {
-    return this.httpClient.post(this.env.url + this.service + "register", registrationBody, httpOptions);
+    return this.httpClient.post(this.env.url + Url.authService + Url.registrationEndpoint, registrationBody, httpOptions);
   }
 }
