@@ -11,7 +11,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>
-    <input formControlName="password" matInput>
+    <input type="password" formControlName="password" matInput>
     <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
       Password is <strong>required</strong>
     </mat-error>

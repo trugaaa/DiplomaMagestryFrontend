@@ -22,7 +22,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>
-    <input matInput formControlName="password">
+    <input type="password" matInput formControlName="password">
     <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">Password is <strong>required</strong>
     </mat-error>
     <mat-error *ngIf="registrationForm.controls['password'].errors?.pattern">Password is <strong>incorrect</strong> it
@@ -32,7 +32,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Confirm password</mat-label>
-    <input matInput formControlName="confirmPassword">
+    <input type="password" matInput formControlName="confirmPassword">
     <mat-error *ngIf="registrationForm.hasError('matching')">
       Passwords <strong>do not match</strong>
     </mat-error>
