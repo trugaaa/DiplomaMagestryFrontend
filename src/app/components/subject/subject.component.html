@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header class="header">
+    <mat-card-title>{{name || 'Test'}}</mat-card-title>
+    <mat-card-subtitle>Course: {{course || 'Test'}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="subject-container">
+    <ng-content>
+
+    </ng-content>
+  </mat-card-content>
+
+  <mat-card-content *ngIf="description" class="footer">{{description}}</mat-card-content>
+</mat-card>
