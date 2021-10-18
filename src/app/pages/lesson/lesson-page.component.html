@@ -1,0 +1,7 @@
+<div class="lesson-page">
+  <mat-card-title>{{lesson!!.name || 'name'}}</mat-card-title>
+  <mat-card-subtitle>{{lesson!!.description || 'description'}}</mat-card-subtitle>
+  <div class="tasks-container">
+    <ts-task *ngFor="let task of lesson!!.tasks" [question]="task.question" [answer]="task.answer"></ts-task>
+  </div>
+</div>

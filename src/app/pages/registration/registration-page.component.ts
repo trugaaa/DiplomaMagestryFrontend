@@ -50,7 +50,7 @@ export class RegistrationPageComponent {
           response => {
             this.cookieService.setCookie("token", response.token)
             this.cookieService.setCookie("role", response.userRole)
-            this.router.navigate([""])
+            this.router.navigate(["dashboard"])
           }, error => {
             console.log(error.statusCode)
           }

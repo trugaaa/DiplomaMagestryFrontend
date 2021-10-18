@@ -24,7 +24,7 @@ export class LoginPageComponent {
     }).subscribe(response => {
       this.cookieService.setCookie("token", response.token)
       this.cookieService.setCookie("role", response.userRole)
-      this.router.navigate([""])
+      this.router.navigate(["dashboard"])
     }, error => {
       if (error.statusCode) {
         console.log(error.statusCode)

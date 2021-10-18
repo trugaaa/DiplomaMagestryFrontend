@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header class="header">
+    <mat-card-title>{{question || 'Question question'}}</mat-card-title>
+  </mat-card-header>
+  <div>
+    <mat-card-content *ngIf="type===taskType.code">
+      <mat-form-field>{{answer || 'Question answer'}}</mat-form-field>
+    </mat-card-content>
+    <mat-card-content *ngIf='type===taskType.text'>
+      <mat-form-field>{{answer || 'Question answer'}}</mat-form-field>
+    </mat-card-content>
+    <mat-card-content *ngIf="type===taskType.test">
+      <mat-form-field>{{answer || 'Question answer'}}</mat-form-field>
+    </mat-card-content>
+  </div>
+</mat-card>
