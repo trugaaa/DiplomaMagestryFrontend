@@ -3,14 +3,22 @@
     <mat-card-title>{{question || 'Question question'}}</mat-card-title>
   </mat-card-header>
   <div>
-    <mat-card-content *ngIf="type===taskType.code">
-      <mat-form-field>{{answer || 'Question answer'}}</mat-form-field>
+    <mat-card-content *ngIf="type == taskType.code || type == taskType.text">
+      <mat-form-field class="task-content" appearance="fill">
+        <textarea matInput [disabled]="lessonStatus!=lessonStatuses.open" [value]='answer'></textarea>
+      </mat-form-field>
     </mat-card-content>
-    <mat-card-content *ngIf='type===taskType.text'>
-      <mat-form-field>{{answer || 'Question answer'}}</mat-form-field>
-    </mat-card-content>
-    <mat-card-content *ngIf="type===taskType.test">
-      <mat-form-field>{{answer || 'Question answer'}}</mat-form-field>
+    <mat-card-content *ngIf="type == taskType.test">
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="task-content example-radio-group"
+        *ngIf="answers"
+        [disabled]="lessonStatus!=lessonStatuses.open"
+        [value]="selected">
+        <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer">
+          {{answer}}
+        </mat-radio-button>
+      </mat-radio-group>
     </mat-card-content>
   </div>
 </mat-card>

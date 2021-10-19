@@ -5,7 +5,8 @@ export interface LessonShort {
   name?: string
   description?: string
   status?: LessonStatus
-  validTill?: string
+  validTill?: string,
+  mark: number
 }
 
 export interface LessonFull {
@@ -14,13 +15,13 @@ export interface LessonFull {
   description?: string
   status?: LessonStatus
   validTill?: string
-  tasks: Task[]
+  tasks: Task[],
+  mark?: number | undefined
 }
 
 
-
-export enum LessonStatus{
-  open,
-  passed,
-  failed
+export enum LessonStatus {
+  open = 'open',
+  passed = 'passed',
+  failed = 'failed'
 }

@@ -2,8 +2,9 @@ export interface Task {
   id: string,
   question: string,
   type: TaskType,
-  answers: string[] | null
-  answer: string
+  answer: string,
+  answers: string[] | null | undefined,
+  selected: string
 }
 
 export enum TaskType {

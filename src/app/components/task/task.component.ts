@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {TaskType} from "../../models/task";
+import {LessonStatus} from "../../models/lesson";
 
 @Component({
   selector: "ts-task",
@@ -7,14 +8,17 @@ import {TaskType} from "../../models/task";
   styleUrls: ["task.component.scss"]
 })
 export class TaskComponent {
-  @Input() id?: string
-  @Input() question?: string
-  @Input() answer?: string
+  @Input() id?: string;
+  @Input() lessonStatus?: LessonStatus;
+
+  @Input() question?: string;
   @Input() type?: TaskType
 
-  taskType = TaskType;
+  @Input() answer?: string
 
-  constructor() {
-    console.log('SSSS: ' + this.id + ":" + this.type)
-  }
+  @Input() answers?: string[] | undefined | null
+  @Input() selected?: string | undefined | null
+
+  taskType = TaskType;
+  lessonStatuses = LessonStatus;
 }

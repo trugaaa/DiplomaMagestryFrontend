@@ -1,3 +1,41 @@
 mat-card {
   margin-bottom: 14px;
+  width: 100%;
+  height: auto;
+}
+
+mat-card-content {
+  width: 100%;
+  height: auto;
+}
+
+.task-content {
+  width: 100%;
+  height: auto;
+}
+
+textarea{
+  overflow-y: auto;
+  word-wrap:break-word;
+  min-height: 45px;
+}
+
+::ng-deep {
+  .mat-radio-button{
+    margin: 12px 12px 0 12px;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    word-wrap: normal;
+    white-space: normal !important;
+  }
+
+  .mat-radio-label {
+    white-space: normal !important;
+  }
+
+  .mat-radio-label-content {
+    white-space: normal !important;
+    padding-right: 20px !important;
+  }
 }

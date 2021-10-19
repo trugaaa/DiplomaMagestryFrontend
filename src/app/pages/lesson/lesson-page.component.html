@@ -1,7 +1,12 @@
 <div class="lesson-page">
-  <mat-card-title>{{lesson!!.name || 'name'}}</mat-card-title>
-  <mat-card-subtitle>{{lesson!!.description || 'description'}}</mat-card-subtitle>
+  <mat-card-title>{{lesson?.name || 'name'}}</mat-card-title>
+  <mat-card-title *ngIf="lesson?.mark" style="color: darkslategray">Result: {{lesson!!.mark}}</mat-card-title>
+  <mat-card-subtitle>{{lesson?.description || 'description'}}</mat-card-subtitle>
+
   <div class="tasks-container">
-    <ts-task *ngFor="let task of lesson!!.tasks" [question]="task.question" [answer]="task.answer"></ts-task>
+    <ts-task *ngFor="let task of lesson?.tasks" [lessonStatus]="lesson?.status" [type]="task.type"
+             [question]="task.question"
+             [answer]="task.answer"
+             [answers]="task.answers" [selected]="task.selected"></ts-task>
   </div>
 </div>

@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CookieService} from "ngx-cookie-service";
 import {SharedModule} from "./shared/shared.module";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {SharedModule} from "./shared/shared.module";
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
