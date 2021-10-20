@@ -1,6 +1,8 @@
-export class Token {
-  userRole?: string
-  token?: string
+import {UserType} from "../services/user.service";
+
+export interface Token {
+  userRole: UserType
+  token: string
 }
 
 export interface Login {

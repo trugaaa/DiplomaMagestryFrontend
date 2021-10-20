@@ -3,22 +3,29 @@
     <mat-card-title>{{question || 'Question question'}}</mat-card-title>
   </mat-card-header>
   <div>
-    <mat-card-content *ngIf="type == taskType.code || type == taskType.text">
-      <mat-form-field class="task-content" appearance="fill">
+    <mat-card-content>
+      <mat-form-field *ngIf="type == taskType.code || type == taskType.text" class="task-content" appearance="fill">
         <textarea matInput [disabled]="lessonStatus!=lessonStatuses.open" [value]='answer'></textarea>
       </mat-form-field>
-    </mat-card-content>
-    <mat-card-content *ngIf="type == taskType.test">
-      <mat-radio-group
-        aria-labelledby="example-radio-group-label"
-        class="task-content example-radio-group"
-        *ngIf="answers"
-        [disabled]="lessonStatus!=lessonStatuses.open"
-        [value]="selected">
+      <mat-radio-group *ngIf="type == taskType.test && answers"
+                       aria-labelledby="example-radio-group-label"
+                       class="task-content example-radio-group"
+                       [disabled]="lessonStatus!=lessonStatuses.open"
+                       [value]="selected">
         <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer">
           {{answer}}
         </mat-radio-button>
       </mat-radio-group>
     </mat-card-content>
+    <div *ngIf="lessonStatus==lessonStatuses.open" class="manage">
+      <div>
+        <button (click)="submitAnswer()" mat-raised-button color="primary">Submit answer</button>
+      </div>
+      <div>
+        <button mat-icon-button (click)="openChat()">
+          <mat-icon class="comment">comment</mat-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </mat-card>

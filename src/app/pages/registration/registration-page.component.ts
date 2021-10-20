@@ -4,6 +4,7 @@ import {AuthApiService} from "../../services/auth-api.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import RegistrationValidators from "./registration.validators";
 import {AppCookieService} from "../../services/app-cookie.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   templateUrl: "registration-page.component.html",
@@ -34,7 +35,8 @@ export class RegistrationPageComponent {
     return this.registrationForm.controls["email"].value
   }
 
-  constructor(private router: Router, private authApiService: AuthApiService, private cookieService: AppCookieService) {
+  constructor(private router: Router, private userService: UserService,
+              private authApiService: AuthApiService, private cookieService: AppCookieService) {
   }
 
   onRegistration() {
@@ -49,7 +51,7 @@ export class RegistrationPageComponent {
         }).subscribe(
           response => {
             this.cookieService.setCookie("token", response.token)
-            this.cookieService.setCookie("role", response.userRole)
+            this.userService.setUserType(response.userRole)
             this.router.navigate(["dashboard"])
           }, error => {
             console.log(error.statusCode)

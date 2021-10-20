@@ -14,7 +14,7 @@ export class AuthApiService {
   }
 
   login(loginBody: Login): Observable<Token> {
-    return this.httpClient.post(this.env.url + Url.authService + Url.loginEndpoint, loginBody, httpOptions)
+    return this.httpClient.post<Token>(this.env.url + Url.authService + Url.loginEndpoint, loginBody, httpOptions)
   }
 
   registration(registrationBody: Registration): Observable<any> {
