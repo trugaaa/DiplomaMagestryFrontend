@@ -9,7 +9,8 @@ export class UserService {
   }
 
   public getUserType(): UserType {
-    return this.cookieService.get("role") as UserType;
+    //return this.cookieService.get("role") as UserType;
+    return UserType.teacher;
   }
 
   public setUserType(userType: UserType) {
