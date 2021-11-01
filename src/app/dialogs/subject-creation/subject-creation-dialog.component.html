@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Створення предмета</h2>
+<div class="mat-typography dialog-box">
+  <mat-form-field appearance="fill">
+    <mat-label>Назва предмету</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Курс</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Опис предмету</mat-label>
+    <textarea class="desc" matInput></textarea>
+  </mat-form-field>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Закрити</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Створити</button>
+</mat-dialog-actions>

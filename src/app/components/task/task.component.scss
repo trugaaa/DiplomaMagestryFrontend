@@ -23,6 +23,7 @@ textarea {
 
 ::ng-deep {
   .mat-radio-button {
+    min-height: 21px;
     margin: 12px 12px 0 12px;
     height: auto;
     width: 100%;

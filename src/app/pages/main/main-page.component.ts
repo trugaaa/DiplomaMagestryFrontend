@@ -3,7 +3,7 @@ import {SubjectsService} from "../../services/subjects.service";
 import {SubjectsResponse} from "../../models/subject";
 import {UserService, UserType} from "../../services/user.service";
 import {MatDialog} from "@angular/material/dialog";
-import {SubjectCreationDialogComponent} from "../../dialog/subject.creation.dialog.component";
+import {SubjectCreationDialogComponent} from "../../dialogs/subject-creation/subject-creation-dialog.component";
 
 @Component({
   templateUrl: "main-page.component.html",

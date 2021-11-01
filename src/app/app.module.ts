@@ -6,20 +6,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CookieService} from "ngx-cookie-service";
-import {SharedModule} from "./shared/shared.module";
-import {MatInputModule} from "@angular/material/input";
+import {BrowserModule} from "@angular/platform-browser";
+import {MatSharedModule} from "./shared/mat.shared.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    BrowserModule,
     HttpClientModule,
-    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatSharedModule
+  ],
+  exports: [
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
