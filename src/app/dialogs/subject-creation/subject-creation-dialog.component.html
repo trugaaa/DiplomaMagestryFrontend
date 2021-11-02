@@ -1,19 +1,33 @@
 <h2 mat-dialog-title>Створення предмета</h2>
-<div class="mat-typography dialog-box">
-  <mat-form-field appearance="fill">
-    <mat-label>Назва предмету</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Курс</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Опис предмету</mat-label>
-    <textarea class="desc" matInput></textarea>
-  </mat-form-field>
-</div>
-<mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Закрити</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Створити</button>
-</mat-dialog-actions>
+<form [formGroup]="subjectCreationForm">
+  <div class="mat-typography dialog-box">
+    <mat-form-field appearance="fill">
+      <mat-label>Назва предмету</mat-label>
+      <textarea matInput formControlName="name"></textarea>
+      <mat-error *ngIf="subjectCreationForm.controls['name'].hasError('required')">
+        <strong>Поле обов'язкове</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Курс</mat-label>
+      <textarea formControlName="course" matInput></textarea>
+      <mat-error *ngIf="subjectCreationForm.controls['course'].hasError('required')">
+        <strong>Поле обов'язкове</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Опис предмету</mat-label>
+      <textarea formControlName="description" class="desc" matInput></textarea>
+      <mat-error *ngIf="subjectCreationForm.controls['description'].hasError('required')">
+        <strong>Поле обов'язкове</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Закрити</button>
+    <button mat-raised-button [disabled]='!subjectCreationForm.valid' (click)="onCreateSubject()"
+            color="primary" [mat-dialog-close]="true">
+      Створити
+    </button>
+  </mat-dialog-actions>
+</form>
