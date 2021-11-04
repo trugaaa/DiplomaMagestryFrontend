@@ -46,7 +46,7 @@ export class RegistrationPageComponent {
       password: this.getPassword()
     }).subscribe(() => {
         this.authApiService.login({
-          userName: this.getUsername(),
+          userNameOrEmail: this.getUsername(),
           password: this.getPassword()
         }).subscribe(
           response => {

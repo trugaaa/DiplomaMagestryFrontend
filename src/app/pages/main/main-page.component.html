@@ -1,8 +1,8 @@
 <div class="teacher" *ngIf="currentUserType==userTypes.teacher">
   <button (click)="openCreationDialog()" mat-raised-button color="primary">Add new lesson</button>
 </div>
-<div class="container" *ngIf="subjectsResponse!!.subjects">
-  <sb-subject *ngFor="let subject of subjectsResponse!!.subjects" [name]="subject.name" [course]="subject.course"
+<div class="container" *ngIf="subjectsResponse">
+  <sb-subject *ngFor="let subject of subjectsResponse" [name]="subject.name" [course]="subject.course"
               [description]="subject.description">
     <ls-lesson *ngFor="let lesson of subject.lessons" [subjectId]="subject.id" [id]="lesson.id"
                [lessonName]="lesson.name" [description]="lesson.description" [validTill]="lesson.validTill">

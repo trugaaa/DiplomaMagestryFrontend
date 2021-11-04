@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {AuthApiService} from "../../services/auth-api.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {SubjectsService} from "../../services/subjects.service";
 
 @Component({
   selector: "subject-creation-dialog",
@@ -9,7 +10,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ["subject-creation-dialog.component.scss"]
 })
 export class SubjectCreationDialogComponent {
-  constructor(private apiService: AuthApiService, private router: Router) {
+  constructor(private apiService: AuthApiService, private router: Router,
+              private subjectService: SubjectsService) {
   }
 
   subjectCreationForm = new FormGroup({
@@ -19,6 +21,14 @@ export class SubjectCreationDialogComponent {
   });
 
   onCreateSubject() {
-    this.router.navigate([`subject/new/lesson/new`]);
+    this.subjectService.createSubject({
+      name: this.subjectCreationForm.get("name")!!.value,
+      course: this.subjectCreationForm.get("course")!!.value,
+      description: this.subjectCreationForm.get("description")!!.value
+    }).subscribe(
+      ()=>{
+        window.location.reload();
+      }
+    )
   }
 }

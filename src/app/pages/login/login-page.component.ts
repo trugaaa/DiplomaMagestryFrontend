@@ -21,7 +21,7 @@ export class LoginPageComponent {
 
   onLogin() {
     this.authApiService.login({
-      userName: this.loginForm.controls["username"].value,
+      userNameOrEmail: this.loginForm.controls["username"].value,
       password: this.loginForm.controls["password"].value
     }).subscribe(response => {
       this.cookieService.setCookie("token", response.token)

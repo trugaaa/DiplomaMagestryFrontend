@@ -6,7 +6,7 @@ export interface Token {
 }
 
 export interface Login {
-  userName: string
+  userNameOrEmail: string
   password: string
 }
 

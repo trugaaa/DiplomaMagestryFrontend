@@ -2,22 +2,21 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
-import {httpOptions} from "./options";
-import {Url} from "./url";
-import {SubjectsResponse} from "../models/subject";
-import {mockSubjectList} from "../../assets/subjects_list.mock";
+import {Subject} from "../models/subject";
 
 @Injectable({providedIn: "root"})
 export class SubjectsService {
   env = environment;
+  api = "/api/subjects"
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getSubjects(): Observable<any> {
-    return new Observable<SubjectsResponse>(response => {
-      response.next(JSON.parse(mockSubjectList))
-    })
-    return this.httpClient.get(this.env.url + Url.subjectsEndpoint, httpOptions)
+  getSubjects(): Observable<Subject[]> {
+    return this.httpClient.get<Subject[]>(this.env.url + this.api)
+  }
+
+  createSubject(subject: { name: any; course: any; description: any }): Observable<any> {
+    return this.httpClient.post<any>(this.env.url + this.api, subject)
   }
 }
