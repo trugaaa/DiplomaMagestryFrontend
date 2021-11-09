@@ -20,4 +20,8 @@ export class AppCookieService {
   getCookie(key: string) {
     return this.cookieService.get(key);
   }
+
+  deleteAllCookie(){
+    this.cookieService.deleteAll()
+  }
 }

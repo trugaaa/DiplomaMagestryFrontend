@@ -11,4 +11,7 @@
   </mat-card-content>
 
   <mat-card-content *ngIf="description" class="footer">{{description}}</mat-card-content>
+  <div class="teacher" *ngIf="currentUser==userTypes.teacher">
+    <button (click)="openLessonCreationDialog()" mat-raised-button color="primary">Add new lesson</button>
+  </div>
 </mat-card>

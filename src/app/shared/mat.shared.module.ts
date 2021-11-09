@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {CommonModule} from "@angular/common";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {CommonModule} from "@angular/common";
     MatPaginatorModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule
   ],
   exports: [
     CommonModule,
@@ -41,7 +43,8 @@ import {CommonModule} from "@angular/common";
     MatPaginatorModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule
   ],
 })
 export class MatSharedModule {

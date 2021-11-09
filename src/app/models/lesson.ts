@@ -6,7 +6,8 @@ export interface LessonShort {
   description?: string
   status?: LessonStatus
   validTill?: string,
-  mark: number
+  mark?: number,
+  subjectId?: string
 }
 
 export interface LessonFull {

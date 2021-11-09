@@ -1,0 +1,29 @@
+<div class="mat-typography dialog-box">
+  <h2 mat-dialog-title>Створення практичного завдання</h2>
+  <form [formGroup]="lessonCreationForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Назва практичного завдання</mat-label>
+      <textarea matInput formControlName="lessonName"></textarea>
+      <mat-error *ngIf="lessonCreationForm.controls['lessonName'].hasError('required')">
+        <strong>Поле обов'язкове</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Опис практичного завдання</mat-label>
+      <textarea formControlName="description" class="desc" matInput></textarea>
+      <mat-error *ngIf="lessonCreationForm.controls['description'].hasError('required')">
+        <strong>Поле обов'язкове</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Закрити</button>
+    <button mat-raised-button [disabled]='!lessonCreationForm.valid' (click)="onCreateLesson()"
+            color="primary" [mat-dialog-close]="true">
+      Створити
+    </button>
+  </mat-dialog-actions>
+</div>
+

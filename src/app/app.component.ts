@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AuthApiService} from "./services/auth-api.service";
 import {AppCookieService} from "./services/app-cookie.service";
 import {Router} from "@angular/router";
+import {SubjectsService} from "./services/subjects.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,18 @@ import {Router} from "@angular/router";
 export class AppComponent {
   title = 'Diploma';
 
-  constructor(private authApiService: AuthApiService, private cookieService: AppCookieService, private router: Router) {
+  constructor(private subjectsService:SubjectsService, private cookieService: AppCookieService, private router: Router) {
 
+  }
+
+  ngOnInit() {
+    this.subjectsService.getSubjects().subscribe(
+      () => {
+        this.router.navigate(["dashboard"])
+      },error => {
+        this.router.navigate(["login"])
+        this.cookieService.deleteAllCookie()
+      }
+    );
   }
 }

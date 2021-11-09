@@ -21,14 +21,7 @@ export class AuthApiService {
     return this.httpClient.post(this.env.url + Url.authService + Url.registrationEndpoint, registrationBody, httpOptions);
   }
 
-  isAuthorized(): boolean {
-    this.httpClient.get(this.env.url+ Url.authService + "test").subscribe(
-      () => {
-        return true;
-      }, error => {
-        return false;
-      }
-    );
-    return true;
+  isAuthorized(): Observable<any> {
+    return this.httpClient.get(this.env.url+ Url.authService + "test");
   }
 }

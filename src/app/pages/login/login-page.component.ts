@@ -15,8 +15,8 @@ export class LoginPageComponent {
   }
 
   loginForm = new FormGroup({
-    username: new FormControl("", Validators.required),
-    password: new FormControl("", Validators.required)
+    username: new FormControl("Prepod", Validators.required),
+    password: new FormControl("PredmetDermo232$", Validators.required)
   });
 
   onLogin() {
