@@ -9,6 +9,12 @@ import {CookieService} from "ngx-cookie-service";
 import {BrowserModule} from "@angular/platform-browser";
 import {MatSharedModule} from "./shared/mat.shared.module";
 import {AuthInterceptor} from "./services/auth.interceptor";
+import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS,
+  MatMomentDateModule,
+  MomentDateAdapter
+} from "@angular/material-moment-adapter";
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -20,16 +26,30 @@ import {AuthInterceptor} from "./services/auth.interceptor";
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatSharedModule
+    MatSharedModule,
+    MatMomentDateModule
   ],
-  exports: [
-  ],
+  exports: [],
   providers: [CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }],
+    },
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'uk-UA'
+    },
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    {
+      provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+      useValue: { useUtc: true }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

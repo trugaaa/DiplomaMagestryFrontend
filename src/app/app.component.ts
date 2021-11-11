@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {AuthApiService} from "./services/auth-api.service";
 import {AppCookieService} from "./services/app-cookie.service";
 import {Router} from "@angular/router";
 import {SubjectsService} from "./services/subjects.service";
@@ -12,15 +11,18 @@ import {SubjectsService} from "./services/subjects.service";
 export class AppComponent {
   title = 'Diploma';
 
-  constructor(private subjectsService:SubjectsService, private cookieService: AppCookieService, private router: Router) {
-
+  constructor(
+    private subjectsService: SubjectsService,
+    private cookieService: AppCookieService,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
     this.subjectsService.getSubjects().subscribe(
       () => {
         this.router.navigate(["dashboard"])
-      },error => {
+      }, error => {
         this.router.navigate(["login"])
         this.cookieService.deleteAllCookie()
       }

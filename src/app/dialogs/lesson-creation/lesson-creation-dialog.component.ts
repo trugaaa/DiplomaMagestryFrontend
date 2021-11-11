@@ -22,7 +22,7 @@ export class LessonCreationDialogComponent {
 
   lessonCreationForm = new FormGroup({
     lessonName: new FormControl("", Validators.required),
-    //tillDate: new FormControl("", Validators.required),
+    tillDate: new FormControl("", Validators.required),
     description: new FormControl("", Validators.required)
   });
 
@@ -30,8 +30,7 @@ export class LessonCreationDialogComponent {
     this.subjectService.createLesson({
       subjectId: this.id,
       name: this.lessonCreationForm.get("lessonName")!!.value,
-      //validTill: this.lessonCreationForm.get("tillDate")!!.value,
-      validTill: "2021-11-09T20:23:18.744Z",
+      validTill: this.lessonCreationForm.get("tillDate")!!.value,
       description: this.lessonCreationForm.get("description")!!.value,
     }).subscribe(
       () => {
