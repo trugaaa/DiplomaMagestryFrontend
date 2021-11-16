@@ -3,6 +3,7 @@ import {LessonComponent} from "./lesson.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSharedModule} from "../../shared/mat.shared.module";
 
 @NgModule({
   exports: [
@@ -11,7 +12,8 @@ import {MatIconModule} from "@angular/material/icon";
   imports: [
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSharedModule
   ],
   declarations: [LessonComponent]
 })

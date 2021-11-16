@@ -1,3 +1,6 @@
+<div class="teacher" *ngIf="currentUserType==userTypes.teacher && lesson?.status === lessonTypes.open">
+  <button (click)="openTaskCreationDialog()" mat-raised-button color="primary">Додати завдання</button>
+</div>
 <div class="lesson-page">
   <mat-card-title>{{lesson?.name || 'name'}}</mat-card-title>
   <mat-card-title *ngIf="lesson?.mark" style="color: darkslategray">Result: {{lesson!!.mark}}</mat-card-title>

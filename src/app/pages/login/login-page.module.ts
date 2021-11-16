@@ -4,6 +4,7 @@ import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {MatSharedModule} from "../../shared/mat.shared.module";
+import {TaskCreationDialogModule} from "../../dialogs/task-creation/task-creation-dialog.module";
 
 @NgModule({
   declarations: [LoginPageComponent],
