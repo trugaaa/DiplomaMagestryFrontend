@@ -13,11 +13,19 @@ export class LessonService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getLesson(id:number): Observable<LessonFull> {
+  getLessons(): Observable<LessonShort> {
+    return this.httpClient.get<LessonShort>(this.env.url + this.api)
+  }
+
+  getLesson(id: number): Observable<LessonFull> {
     return this.httpClient.get<LessonFull>(this.env.url + this.api + '/' + id)
   }
 
   createLesson(lesson: LessonShort): Observable<LessonShort> {
     return this.httpClient.post<LessonShort>(this.env.url + this.api, lesson)
+  }
+
+  deleteLesson(id: string | undefined): Observable<LessonShort> {
+    return this.httpClient.delete<LessonShort>(this.env.url + this.api + "/" + id)
   }
 }

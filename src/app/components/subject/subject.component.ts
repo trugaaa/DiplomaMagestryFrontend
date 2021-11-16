@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, Inject, Input} from "@angular/core";
 import {UserService, UserType} from "../../services/user.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {SubjectCreationDialogComponent} from "../../dialogs/subject-creation/subject-creation-dialog.component";
 import {LessonCreationDialogComponent} from "../../dialogs/lesson-creation/lesson-creation-dialog.component";
+import {SubjectsService} from "../../services/subjects.service";
 
 @Component({
   selector: "sb-subject",
@@ -19,11 +19,24 @@ export class SubjectComponent {
   currentUser: UserType
 
 
-  constructor(private userService: UserService, public dialog: MatDialog, private changeDetection: ChangeDetectorRef) {
-    this.currentUser = userService.getUserType()
+  constructor(private userService: UserService,
+              public dialog: MatDialog,
+              private changeDetection: ChangeDetectorRef,
+              private subjectService: SubjectsService
+  ) {
+    this
+      .currentUser = userService.getUserType()
   }
 
   openLessonCreationDialog() {
     const dialogRef = this.dialog.open(LessonCreationDialogComponent, {data: {id: this.id}});
+  }
+
+  deleteLesson() {
+    this.subjectService.deleteSubject(this.id).subscribe(
+      () => {
+        window.location.reload();
+      }
+    )
   }
 }

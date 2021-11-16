@@ -1,5 +1,8 @@
-import {Component, Input} from "@angular/core";
+import {ChangeDetectorRef, Component, Input} from "@angular/core";
 import {Router} from "@angular/router";
+import {LessonService} from "../../services/lesson.service";
+import {UserService} from "../../services/user.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "ls-lesson",
@@ -14,10 +17,18 @@ export class LessonComponent {
   @Input() validTill?: string;
   @Input() description?: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private lessonService:LessonService,
+              private userService: UserService,
+              private changeDetection: ChangeDetectorRef) {
   }
 
-  onClick() {
-    this.router.navigate([`subject/${this.subjectId}/lesson/${this.id}`])
+  goToLesson() {
+    this.router.navigate([`subject/${this.subjectId}/lesson/${this.id}`]);
+  }
+
+  deleteLesson(){
+    this.lessonService.deleteLesson(this.id).subscribe();
+    this.changeDetection.detectChanges()
   }
 }

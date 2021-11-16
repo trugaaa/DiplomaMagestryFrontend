@@ -19,4 +19,8 @@ export class SubjectsService {
   createSubject(subject: { name: any; course: any; description: any }): Observable<any> {
     return this.httpClient.post<any>(this.env.url + this.api, subject)
   }
+
+  deleteSubject(id: string | undefined): Observable<any> {
+    return this.httpClient.delete<any>(this.env.url + this.api + "/" + id)
+  }
 }
