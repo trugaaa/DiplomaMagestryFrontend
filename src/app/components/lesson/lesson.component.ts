@@ -2,7 +2,6 @@ import {ChangeDetectorRef, Component, Input} from "@angular/core";
 import {Router} from "@angular/router";
 import {LessonService} from "../../services/lesson.service";
 import {UserService} from "../../services/user.service";
-import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "ls-lesson",
@@ -28,7 +27,9 @@ export class LessonComponent {
   }
 
   deleteLesson(){
-    this.lessonService.deleteLesson(this.id).subscribe();
-    this.changeDetection.detectChanges()
+    this.lessonService.deleteLesson(this.id).subscribe(()=>{
+      window.location.reload();
+      this.changeDetection.detectChanges()
+    });
   }
 }

@@ -15,9 +15,7 @@ export class LessonCreationDialogComponent {
 
   constructor(private apiService: AuthApiService, private router: Router,
               private subjectService: LessonService, @Inject(MAT_DIALOG_DATA) data: any) {
-    console.log(data)
     this.id = data.id
-    console.log(this.id)
   }
 
   lessonCreationForm = new FormGroup({

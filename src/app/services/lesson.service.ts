@@ -17,8 +17,8 @@ export class LessonService {
     return this.httpClient.get<LessonShort>(this.env.url + this.api)
   }
 
-  getLesson(id: number): Observable<LessonFull> {
-    return this.httpClient.get<LessonFull>(this.env.url + this.api + '/' + id)
+    getLesson(id: string | null): Observable<LessonFull[]> {
+    return this.httpClient.get<LessonFull[]>(this.env.url + this.api + '/' + id)
   }
 
   createLesson(lesson: LessonShort): Observable<LessonShort> {

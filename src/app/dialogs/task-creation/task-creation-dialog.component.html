@@ -1,26 +1,46 @@
 <h2 mat-dialog-title>Створення завдання</h2>
+<form [formGroup]="taskCreationForm">
+  <div class="mat-typography dialog-box">
+    <mat-form-field appearance="fill">
+      <mat-label>Оберіть тип завдання</mat-label>
+      <mat-select formControlName="questionType">
+        <mat-option [value]="taskTypes.text">
+          Текстова відповідь
+        </mat-option>
+        <mat-option [value]="taskTypes.code">
+          Код на мові програмування
+        </mat-option>
+        <mat-option [value]="taskTypes.test">
+          Тест
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-<div class="mat-typography dialog-box">
-  <mat-form-field appearance="fill">
-    <mat-label>Оберіть тип завдання</mat-label>
-    <mat-select>
-      <mat-option [value]="taskTypes.text">
-        Текстова відповідь
-      </mat-option>
-      <mat-option [value]="taskTypes.code">
-        Код на мові програмування
-      </mat-option>
-      <mat-option [value]="taskTypes.test">
-        Тест
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <div *ngIf="taskCreationForm.controls['questionType'].value == taskTypes.code">
+      <mat-form-field appearance="fill">
+        <mat-label>Виберіть мову програмування</mat-label>
+        <mat-select>
+          <mat-option value="C#">
+            C#
+          </mat-option>
+          <mat-option value="Java">
+            Java
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-  <mat-dialog-actions align="end">
-    <button mat-raised-button mat-dialog-close>Закрити</button>
-    <button mat-raised-button (click)="onCreateTask()"
-            color="primary" [mat-dialog-close]="true">
-      Створити
-    </button>
-  </mat-dialog-actions>
-</div>
+    <mat-form-field *ngIf="taskCreationForm.controls['questionType'].valid" ngDefaultControl formControlName="question" appearance="fill">
+      <mat-label>Введіть питання...</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+      <button mat-raised-button mat-dialog-close>Закрити</button>
+      <button mat-raised-button [disabled]='!taskCreationForm.valid' (click)="onCreateTask()"
+              color="primary" [mat-dialog-close]="true">
+        Створити
+      </button>
+    </mat-dialog-actions>
+  </div>
+</form>

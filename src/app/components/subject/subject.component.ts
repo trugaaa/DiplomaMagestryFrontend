@@ -29,7 +29,7 @@ export class SubjectComponent {
   }
 
   openLessonCreationDialog() {
-    const dialogRef = this.dialog.open(LessonCreationDialogComponent, {data: {id: this.id}});
+    this.dialog.open(LessonCreationDialogComponent, {data: {id: this.id}});
   }
 
   deleteLesson() {

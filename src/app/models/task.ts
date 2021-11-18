@@ -1,10 +1,11 @@
 export interface Task {
-  id: string,
+  id?: string,
+  lessonId?: string,
   question: string,
   type: TaskType,
-  answer: string,
-  answers: string[] | null | undefined,
-  selected: string
+  answer?: string,
+  answers?: string[] | null | undefined,
+  selected?: string
 }
 
 export enum TaskType {

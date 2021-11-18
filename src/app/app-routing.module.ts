@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: "subject/:subjectId/lesson/:lessonId",
     loadChildren: () => import("./pages/lesson/lesson-page.module").then(module => module.LessonPageModule)
+  },
+  {
+    path: "**",
+    redirectTo: "dashboard"
   }
 ];
 
