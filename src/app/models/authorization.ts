@@ -11,6 +11,8 @@ export interface Login {
 }
 
 export interface Registration {
+  firstName: string
+  secondName: string
   email: string
   userName: string
   password: string

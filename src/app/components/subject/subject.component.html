@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header class="header">
-    <mat-card-title>{{name || 'Test'}}</mat-card-title>
-    <mat-card-subtitle>Course: {{course || 'Test'}}</mat-card-subtitle>
+    <mat-card-title>{{name}}</mat-card-title>
+    <mat-card-subtitle>Курс: {{course}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content class="subject-container">
@@ -13,7 +13,7 @@
   <mat-card-content *ngIf="description" class="footer">{{description}}</mat-card-content>
 
   <div class="teacher actions" *ngIf="currentUser==userTypes.teacher">
-    <button (click)="openLessonCreationDialog()" mat-raised-button color="primary">Add new lesson</button>
+    <button (click)="openLessonCreationDialog()" mat-raised-button color="primary">Додати практичне завдання</button>
     <button (click)="deleteLesson()" mat-raised-button color="warn">Видалити предмет</button>
   </div>
 </mat-card>

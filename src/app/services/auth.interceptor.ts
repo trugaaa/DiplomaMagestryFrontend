@@ -25,7 +25,6 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            this.cookieService.deleteAll()
             this.router.navigate(["login"])
           }
         }

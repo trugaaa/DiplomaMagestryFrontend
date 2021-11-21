@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from "@angular/core";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {SubjectsService} from "../../services/subjects.service";
 import {Subject} from "../../models/subject";
 import {UserService, UserType} from "../../services/user.service";
@@ -10,23 +10,23 @@ import {SubjectCreationDialogComponent} from "../../dialogs/subject-creation/sub
   styleUrls: ["main-page.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainPageComponent {
-  public subjectsResponse?: Subject[]
-
-  userTypes = UserType
-  currentUserType: UserType
+export class MainPageComponent implements OnInit {
+  public subjectsResponse?: Subject[];
+  userTypes = UserType;
+  currentUserType: UserType;
 
   constructor(private subjectService: SubjectsService, private userService: UserService,
-              public dialog: MatDialog,  private changeDetection: ChangeDetectorRef) {
-    this.currentUserType = this.userService.getUserType()
+              public dialog: MatDialog, private changeDetection: ChangeDetectorRef) {
+    this.currentUserType = this.userService.getUserType();
   }
 
   openCreationDialog() {
-    const dialogRef = this.dialog.open(SubjectCreationDialogComponent);
+    this.dialog.open(SubjectCreationDialogComponent);
   }
 
   ngOnInit() {
     this.subjectService.getSubjects().subscribe(response => {
+      console.log(response)
       this.subjectsResponse = response
       this.changeDetection.detectChanges();
     })

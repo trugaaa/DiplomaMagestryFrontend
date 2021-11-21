@@ -6,17 +6,19 @@ import {LessonComponentModule} from "../../components/lesson/lesson.component.mo
 import {MatSharedModule} from "../../shared/mat.shared.module";
 import {SubjectCreationDialogModule} from "../../dialogs/subject-creation/subject-creation-dialog.module";
 import {LessonCreationDialogModule} from "../../dialogs/lesson-creation/lesson-creation-dialog.module";
+import {ToolbarComponentModule} from "../../components/toolbar/toolbar.component.module";
 
 @NgModule({
   declarations: [MainPageComponent],
-  imports: [
-    MatSharedModule,
-    RouterModule.forChild([{path: '**', component: MainPageComponent}]),
-    SubjectComponentModule,
-    LessonComponentModule,
-    SubjectCreationDialogModule,
-    LessonCreationDialogModule
-  ]
+    imports: [
+        MatSharedModule,
+        RouterModule.forChild([{path: '**', component: MainPageComponent}]),
+        SubjectComponentModule,
+        LessonComponentModule,
+        SubjectCreationDialogModule,
+        LessonCreationDialogModule,
+        ToolbarComponentModule
+    ]
 })
 export class MainPageModule {
 }

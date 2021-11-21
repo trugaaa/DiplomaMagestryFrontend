@@ -4,6 +4,10 @@
   margin: 16px;
 }
 
+mat-card {
+  background-color: rgba(63, 81, 181, 0.1);
+}
+
 .header {
   padding: 4px 8px;
   display: flex;
@@ -53,8 +57,4 @@
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
-}
-
-mat-card {
-  background-color: floralwhite;
 }

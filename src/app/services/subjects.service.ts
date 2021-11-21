@@ -16,6 +16,10 @@ export class SubjectsService {
     return this.httpClient.get<Subject[]>(this.env.url + this.api)
   }
 
+  getSubject(id: string | null): Observable<Subject[]> {
+    return this.httpClient.get<Subject[]>(this.env.url + this.api + "/" + id)
+  }
+
   createSubject(subject: { name: any; course: any; description: any }): Observable<any> {
     return this.httpClient.post<any>(this.env.url + this.api, subject)
   }

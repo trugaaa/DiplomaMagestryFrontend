@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthApiService} from "../../services/auth-api.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -9,7 +9,7 @@ import {UserService} from "../../services/user.service";
   templateUrl: "login-page.component.html",
   styleUrls: ["login-page.component.scss"]
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private userService: UserService,
               private authApiService: AuthApiService, private cookieService: AppCookieService) {
   }
@@ -24,13 +24,13 @@ export class LoginPageComponent {
       userNameOrEmail: this.loginForm.controls["username"].value,
       password: this.loginForm.controls["password"].value
     }).subscribe(response => {
-      this.cookieService.setCookie("token", response.token)
-      this.userService.setUserType(response.userRole)
-      this.router.navigate(["dashboard"])
-    }, error => {
-      if (error.statusCode) {
-        console.log(error.statusCode)
-      }
-    })
+      this.cookieService.setCookie("token", response.token);
+      this.userService.setUserType(response.userRole);
+      this.router.navigate(["dashboard"]);
+    });
+  }
+
+  ngOnInit(): void {
+    this.cookieService.deleteAllCookie();
   }
 }

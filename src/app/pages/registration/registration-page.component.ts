@@ -15,6 +15,8 @@ export class RegistrationPageComponent {
 
   registrationForm = new FormGroup({
     username: new FormControl("", Validators.required),
+    firstname: new FormControl("", Validators.required),
+    lastname: new FormControl("", Validators.required),
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required, Validators.pattern(this.passwordPattern)]),
     confirmPassword: new FormControl("", Validators.required)
@@ -22,6 +24,14 @@ export class RegistrationPageComponent {
     validators: [RegistrationValidators.match('password', 'confirmPassword')]
   });
 
+
+  public getFirstname(): string {
+    return this.registrationForm.controls["firstname"].value
+  }
+
+  public getLastname(): string {
+    return this.registrationForm.controls["lastname"].value
+  }
 
   public getUsername(): string {
     return this.registrationForm.controls["username"].value
@@ -41,6 +51,8 @@ export class RegistrationPageComponent {
 
   onRegistration() {
     this.authApiService.registration({
+      firstName: this.getFirstname(),
+      secondName: this.getLastname(),
       email: this.getEmail(),
       userName: this.getUsername(),
       password: this.getPassword()

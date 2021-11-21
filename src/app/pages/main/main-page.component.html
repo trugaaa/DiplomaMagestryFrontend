@@ -1,6 +1,7 @@
-<div class="teacher" *ngIf="currentUserType==userTypes.teacher">
-  <button (click)="openCreationDialog()" mat-raised-button color="primary">Add new lesson</button>
-</div>
+<toolbar-menu-main></toolbar-menu-main>
+<mat-card class="teacher" *ngIf="currentUserType==userTypes.teacher">
+  <button (click)="openCreationDialog()" mat-raised-button color="primary">Додати новий предмет</button>
+</mat-card>
 <div class="container" *ngIf="subjectsResponse">
   <sb-subject *ngFor="let subject of subjectsResponse" [id]="subject.id" [name]="subject.name" [course]="subject.course"
               [description]="subject.description">

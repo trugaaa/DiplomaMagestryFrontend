@@ -11,3 +11,15 @@
 .teacher{
 margin: 16px;
 }
+
+mat-card-subtitle{
+  white-space: pre-line;
+}
+
+.subject-info{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 12px;
+}

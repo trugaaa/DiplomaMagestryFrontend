@@ -1,6 +1,6 @@
-import {ChangeDetectorRef, Component, Inject, Input} from "@angular/core";
+import {ChangeDetectorRef, Component, Input} from "@angular/core";
 import {UserService, UserType} from "../../services/user.service";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {LessonCreationDialogComponent} from "../../dialogs/lesson-creation/lesson-creation-dialog.component";
 import {SubjectsService} from "../../services/subjects.service";
 
@@ -24,8 +24,7 @@ export class SubjectComponent {
               private changeDetection: ChangeDetectorRef,
               private subjectService: SubjectsService
   ) {
-    this
-      .currentUser = userService.getUserType()
+    this.currentUser = userService.getUserType()
   }
 
   openLessonCreationDialog() {

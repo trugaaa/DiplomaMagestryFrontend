@@ -1,13 +1,20 @@
+<toolbar-menu-main></toolbar-menu-main>
 <div class="teacher" *ngIf="currentUserType==userTypes.teacher">
   <!-- && lesson?.status === lessonTypes.open-->
   <button (click)="openTaskCreationDialog()" mat-raised-button color="primary">Додати завдання</button>
 </div>
 <div class="lesson-page">
   <mat-card>
-    <mat-card-title>{{lesson?.name || 'name'}}</mat-card-title>
-    <mat-card-title *ngIf="lesson?.mark" style="color: darkslategray">Result: {{lesson!!.mark}}</mat-card-title>
-    <mat-card-subtitle>{{lesson?.description || 'description'}}</mat-card-subtitle>
+    <div *ngIf="subject" class="subject-info">
+      <mat-card-subtitle>Предмет: "{{subject.name}}"</mat-card-subtitle>
+      <mat-card-subtitle>Курс: "{{subject.course}}"</mat-card-subtitle>
+    </div>
 
+    <div class="card" *ngIf="lesson">
+    <mat-card-title>Тема: {{lesson.name}}</mat-card-title>
+    <mat-card-title *ngIf="lesson?.mark" style="color: darkslategray">Результат: {{lesson!!.mark}}</mat-card-title>
+    <mat-card-subtitle>{{lesson.description}}</mat-card-subtitle>
+    </div>
     <div class="tasks-container">
       <ts-task *ngFor="let task of lesson?.tasks" [lessonStatus]="lesson?.status" [type]="task.type"
                [question]="task.question"
