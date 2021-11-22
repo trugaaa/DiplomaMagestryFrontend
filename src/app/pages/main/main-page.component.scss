@@ -4,8 +4,29 @@
   width: 100%;
 }
 
+.filters {
+  width: 100%;
+}
+
 .teacher {
-  margin-top: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+  padding: 16px 16px 16px 16px;
+  grid-gap: 8px;
+}
+
+.teacher-button {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex: 1;
+  grid-gap: 4px;
+}
+
+.mat-form-field {
+  font-size: 12px;
+  width: 100%;
 }

@@ -1,7 +1,18 @@
 <toolbar-menu-main></toolbar-menu-main>
 <mat-card class="teacher" *ngIf="currentUserType==userTypes.teacher">
-  <button (click)="openCreationDialog()" mat-raised-button color="primary">Додати новий предмет</button>
+  <div class="filters">
+    <mat-form-field appearance="fill">
+      <mat-label>Ім`я предмета</mat-label>
+      <input  [(ngModel)]="subName" matInput/>
+    </mat-form-field>
+  </div>
+
+  <div class="teacher-button">
+    <button (click)="filterBySubName()" mat-raised-button color="primary">Відсортувати</button>
+    <button (click)="openCreationDialog()" mat-raised-button color="primary">Додати новий предмет</button>
+  </div>
 </mat-card>
+
 <div class="container" *ngIf="subjectsResponse">
   <sb-subject *ngFor="let subject of subjectsResponse" [id]="subject.id" [name]="subject.name" [course]="subject.course"
               [description]="subject.description">

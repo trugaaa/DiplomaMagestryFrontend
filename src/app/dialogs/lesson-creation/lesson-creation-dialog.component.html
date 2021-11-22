@@ -10,7 +10,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Choose a date</mat-label>
+      <mat-label>Дата кінцевої здачі завдання</mat-label>
       <input matInput formControlName="tillDate" [matDatepicker]="datepicker">
       <mat-error *ngIf="lessonCreationForm.controls['tillDate'].hasError('required')">
         <strong>Поле обов'язкове</strong>

@@ -16,6 +16,10 @@ export class SubjectsService {
     return this.httpClient.get<Subject[]>(this.env.url + this.api)
   }
 
+  getSubjectsBySubName(subName: string): Observable<Subject[]> {
+    return this.httpClient.get<Subject[]>(this.env.url + this.api + "?filter=" + subName)
+  }
+
   getSubject(id: string | null): Observable<Subject[]> {
     return this.httpClient.get<Subject[]>(this.env.url + this.api + "/" + id)
   }

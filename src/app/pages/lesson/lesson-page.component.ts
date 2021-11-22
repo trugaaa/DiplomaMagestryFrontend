@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {LessonFull, LessonStatus} from "../../models/lesson";
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
@@ -7,7 +7,6 @@ import {UserService, UserType} from "../../services/user.service";
 import {LessonService} from "../../services/lesson.service";
 import {SubjectsService} from "../../services/subjects.service";
 import {Subject} from "../../models/subject";
-import {mockLesson} from "../../../assets/lesson.mock";
 
 @Component({
   templateUrl: "lesson-page.component.html",
@@ -30,7 +29,6 @@ export class LessonPageComponent implements OnInit {
     this.subjectService.getSubject(this.activeRoute.snapshot.paramMap.get("subjectId")).subscribe(response => {
       this.subject = response[0];
     });
-
 
     this.lessonService.getLesson(this.activeRoute.snapshot.paramMap.get("lessonId")).subscribe(response => {
       this.lesson = response[0];

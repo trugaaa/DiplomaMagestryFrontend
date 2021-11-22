@@ -12,6 +12,7 @@ import {SubjectCreationDialogComponent} from "../../dialogs/subject-creation/sub
 })
 export class MainPageComponent implements OnInit {
   public subjectsResponse?: Subject[];
+  public subName: string = "";
   userTypes = UserType;
   currentUserType: UserType;
 
@@ -22,6 +23,14 @@ export class MainPageComponent implements OnInit {
 
   openCreationDialog() {
     this.dialog.open(SubjectCreationDialogComponent);
+  }
+
+  filterBySubName() {
+    this.subjectService.getSubjectsBySubName(this.subName).subscribe(response => {
+      console.log(response)
+      this.subjectsResponse = response
+      this.changeDetection.detectChanges();
+    });
   }
 
   ngOnInit() {
