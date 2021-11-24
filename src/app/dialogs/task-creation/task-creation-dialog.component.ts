@@ -20,14 +20,16 @@ export class TaskCreationDialogComponent {
 
   taskCreationForm = new FormGroup({
     questionType: new FormControl(null, Validators.required),
-    question: new FormControl("", Validators.required)
+    question: new FormControl("", Validators.required),
+    answer: new FormControl("", Validators.required)
   });
 
   onCreateTask() {
     this.tasksService.createTask({
       lessonId: this.id,
       question: this.taskCreationForm.controls['question'].value,
-      type: this.taskCreationForm.controls['questionType'].value
+      type: this.taskCreationForm.controls['questionType'].value,
+      answer: this.taskCreationForm.controls['answer'].value
     }).subscribe(response => {
       console.log(response)
       location.reload()

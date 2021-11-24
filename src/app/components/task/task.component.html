@@ -1,7 +1,13 @@
 <mat-card>
-  <mat-card-header class="header">
-    <mat-card-title>{{question || 'Question question'}}</mat-card-title>
-  </mat-card-header>
+  <div class="actions">
+    <mat-card-header class="header">
+      <mat-card-title>{{question || 'Question question'}}</mat-card-title>
+    </mat-card-header>
+    <button (click)="onTaskDelete()" mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
   <div>
     <mat-card-content>
       <mat-form-field *ngIf="type == taskType.code || type == taskType.text" class="task-content" appearance="fill">

@@ -16,7 +16,8 @@
     <mat-card-subtitle>{{lesson.description}}</mat-card-subtitle>
     </div>
     <div class="tasks-container">
-      <ts-task *ngFor="let task of lesson?.tasks" [lessonStatus]="lesson?.status" [type]="task.type"
+      <ts-task *ngFor="let task of lesson?.tasks" [id]="task.id" [lessonStatus]="lesson?.status"
+               [type]="task.type"
                [question]="task.question"
                [answer]="task.answer"
                [answers]="task.answers" [selected]="task.selected"></ts-task>

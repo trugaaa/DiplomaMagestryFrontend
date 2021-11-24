@@ -1,7 +1,6 @@
 mat-card {
-  margin-bottom: 14px;
-  width: 100%;
   height: auto;
+  margin: 0 0 12px 0;
 }
 
 mat-card-content {
@@ -62,4 +61,12 @@ textarea {
 mat-icon {
   height: auto;
   width: auto;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex: 1;
 }

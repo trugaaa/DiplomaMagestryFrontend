@@ -4,7 +4,6 @@ import {UsersPageComponent} from "./users-page.component";
 import {MatSharedModule} from "../../shared/mat.shared.module";
 import {ToolbarComponentModule} from "../../components/toolbar/toolbar.component.module";
 import {UserComponentModule} from "../../components/user/user.component.module";
-import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [UsersPageComponent],
@@ -12,8 +11,7 @@ import {MatTableModule} from "@angular/material/table";
     MatSharedModule,
     RouterModule.forChild([{path: '**', component: UsersPageComponent}]),
     ToolbarComponentModule,
-    UserComponentModule,
-    MatTableModule
+    UserComponentModule
   ]
 })
 export class UsersPageModule {

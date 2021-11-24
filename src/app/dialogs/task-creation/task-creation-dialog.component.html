@@ -30,8 +30,16 @@
       </mat-form-field>
     </div>
 
-    <mat-form-field *ngIf="taskCreationForm.controls['questionType'].valid" ngDefaultControl formControlName="question" appearance="fill">
+    <mat-form-field *ngIf="taskCreationForm.controls['questionType'].valid" ngDefaultControl formControlName="question"
+                    appearance="fill">
       <mat-label>Введіть питання...</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="taskCreationForm.controls['questionType'].valid &&
+    taskCreationForm.controls['questionType'].value!==taskTypes.test"
+                    ngDefaultControl formControlName="answer" appearance="fill">
+      <mat-label>Введіть правильну відвовідь...</mat-label>
       <input matInput>
     </mat-form-field>
 
