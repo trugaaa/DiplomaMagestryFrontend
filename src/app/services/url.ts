@@ -3,6 +3,6 @@ export class Url {
 
   public static loginEndpoint ="login"
   public static registrationEndpoint ="register"
-  public static testEndpoint ="test"
   public static subjectsEndpoint = "/api/subjects"
+  public static usersEndpoint = "/api/users"
 }

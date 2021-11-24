@@ -1,0 +1,20 @@
+.user{
+  display: flex;
+  flex-direction: row;
+  margin: 16px 16px 0;
+  padding: 16px 16px 16px 16px;
+  grid-gap: 8px;
+}
+
+.user-actions{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.info{
+  grid-gap: 8px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}

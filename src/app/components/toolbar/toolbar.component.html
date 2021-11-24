@@ -1,6 +1,14 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Дипломна робота</span>
+    <div>
+      <div class="dashboard">
+        <button mat-icon-button (click)="goToDashboard()">
+          <mat-icon>dashboard</mat-icon>
+        </button>
+        <span >Дипломна робота</span>
+        <button *ngIf="userService.getUserType()!==userTypes.student" mat-button color="white" (click)="goToUsersPage()">Користувачі</button>
+      </div>
+    </div>
     <button mat-icon-button (click)="onLogout()">
       <mat-icon>logout</mat-icon>
     </button>

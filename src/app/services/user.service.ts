@@ -1,11 +1,20 @@
 import {Injectable} from "@angular/core";
 import {CookieService} from "ngx-cookie-service";
+import {environment} from "../../environments/environment";
+import {Observable} from "rxjs";
+import {Subject} from "../models/subject";
+import {HttpClient} from "@angular/common/http";
+import {User} from "../models/user";
+import {group} from "@angular/animations";
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private cookieService: CookieService) {
+  env = environment;
+  api = "/api/users"
+
+  constructor(private cookieService: CookieService, private httpClient: HttpClient) {
   }
 
   public getUserType(): UserType {
@@ -15,6 +24,14 @@ export class UserService {
 
   public setUserType(userType: UserType) {
     this.cookieService.set("role", userType);
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.env.url + this.api)
+  }
+
+  getUsersWithFiltering(groupId: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.env.url + this.api + "?GroupId=" + groupId)
   }
 }
 

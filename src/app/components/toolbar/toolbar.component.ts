@@ -1,5 +1,6 @@
-import {Component, Input} from "@angular/core";
+import {Component} from "@angular/core";
 import {Router} from "@angular/router";
+import {UserService, UserType} from "../../services/user.service";
 
 @Component({
   selector: "toolbar-menu-main",
@@ -7,10 +8,20 @@ import {Router} from "@angular/router";
   styleUrls: ["toolbar.component.scss"]
 })
 export class ToolbarComponent {
-  constructor(private router: Router) {
+  userTypes = UserType
+
+  constructor(private router: Router, public userService: UserService) {
   }
 
-  onLogout(){
+  onLogout() {
     this.router.navigate(["login"])
+  }
+
+  goToDashboard() {
+    this.router.navigate(["dashboard"])
+  }
+
+  goToUsersPage() {
+    this.router.navigate(["users"])
   }
 }

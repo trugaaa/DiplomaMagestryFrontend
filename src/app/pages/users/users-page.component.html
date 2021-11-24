@@ -1,0 +1,35 @@
+<toolbar-menu-main></toolbar-menu-main>
+
+<mat-card class="teacher" *ngIf="userService.getUserType()!==userTypes.student">
+  <mat-form-field [(ngModel)]="firstName" appearance="fill">
+    <mat-label>Ім'я</mat-label>
+    <input matInput/>
+  </mat-form-field>
+
+  <mat-form-field [(ngModel)]="secondName" appearance="fill">
+    <mat-label>Прізвище</mat-label>
+    <input matInput/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Група</mat-label>
+    <mat-select [(ngModel)]="groupSelected">
+      <mat-option [value]="">Невідомо</mat-option>
+      <mat-option *ngFor="let group of groups" [value]="group.id">{{group.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="teacher-button">
+    <button (click)="filter()" mat-raised-button color="primary">Відсортувати</button>
+  </div>
+</mat-card>
+
+<mat-card>
+  <div class="container" *ngIf="users">
+    <usr-user *ngFor="let user of users" [id]="user.id"
+              [userName]="user.userName" [email]="user.email"
+              [firstName]="user.firstName" [secondName]="user.secondName"
+              [age]="user.age" [group]="getGroupById(user.groupId)"
+              [allGroups]="groups">
+    </usr-user>
+  </div>
+</mat-card>

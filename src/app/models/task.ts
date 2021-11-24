@@ -1,6 +1,6 @@
 export interface Task {
   id?: string,
-  lessonId?: string,
+  lessonId: string,
   question: string,
   type: TaskType,
   answer?: string,
@@ -9,7 +9,7 @@ export interface Task {
 }
 
 export enum TaskType {
-  test = 'test',
-  text = 'text',
-  code = 'code'
+  test = 'Test',
+  text = 'Text',
+  code = 'Code'
 }

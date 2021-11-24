@@ -1,0 +1,11 @@
+<mat-card class="user">
+  <div class="info">
+    <div>{{userName}}</div>
+    <div>{{secondName}}</div>
+    <div>{{group?.name}}</div>
+  </div>
+
+  <div class="user-actions">
+    <button (click)="changeGroup()" mat-raised-button color="primary">Змінити групу</button>
+  </div>
+</mat-card>

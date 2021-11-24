@@ -1,5 +1,4 @@
 import {Component, Inject} from "@angular/core";
-import {SubjectsService} from "../../services/subjects.service";
 import {TaskType} from "../../models/task";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TaskService} from "../../services/task.service";
@@ -29,8 +28,11 @@ export class TaskCreationDialogComponent {
       lessonId: this.id,
       question: this.taskCreationForm.controls['question'].value,
       type: this.taskCreationForm.controls['questionType'].value
-    }).subscribe(() => {
-     // location.reload()
+    }).subscribe(response => {
+      console.log(response)
+      location.reload()
+    }, error => {
+      console.log(error)
     })
   }
 }
