@@ -1,20 +1,36 @@
-.user{
+.user {
   display: flex;
   flex-direction: row;
-  margin: 16px 16px 0;
-  padding: 16px 16px 16px 16px;
   grid-gap: 8px;
 }
 
-.user-actions{
+.user-actions {
   display: flex;
   flex-direction: row;
   gap: 16px;
 }
 
-.info{
-  grid-gap: 8px;
+.info {
   display: flex;
   flex-direction: row;
+  grid-gap: 8px;
   width: 100%;
+}
+
+mat-card {
+  margin: 0 0 12px 0;
+}
+
+.column {
+  visibility: visible;
+  width: 100%;
+}
+
+.subtitle {
+  color: darkgrey;
+  font-size: 16px;
+}
+
+.user-icon{
+  font-size: 32px;
 }

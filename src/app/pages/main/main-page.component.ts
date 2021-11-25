@@ -18,7 +18,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(private subjectService: SubjectsService, private userService: UserService,
               public dialog: MatDialog, private changeDetection: ChangeDetectorRef) {
-    this.currentUserType = this.userService.getUserType();
+    this.currentUserType = this.userService.getCurrentUserType();
   }
 
   openCreationDialog() {

@@ -42,7 +42,6 @@ export class UsersPageComponent implements OnInit {
   }
 
   filter() {
-    console.log(this.groupSelected)
     this.userService.getUsersWithFiltering(this.groupSelected).subscribe(response => {
       this.users = response;
       this.changeDetection.detectChanges();

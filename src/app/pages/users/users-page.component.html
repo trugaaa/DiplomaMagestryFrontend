@@ -1,6 +1,6 @@
 <toolbar-menu-main></toolbar-menu-main>
 
-<mat-card class="teacher" *ngIf="userService.getUserType()!==userTypes.student">
+<mat-card class="teacher" *ngIf="userService.getCurrentUserType()!==userTypes.student">
   <mat-form-field [(ngModel)]="firstName" appearance="fill">
     <mat-label>Ім'я</mat-label>
     <input matInput/>
@@ -23,13 +23,10 @@
   </div>
 </mat-card>
 
-<mat-card>
-  <div class="container" *ngIf="users">
+<mat-card *ngIf="users" class="user-container">
     <usr-user *ngFor="let user of users" [id]="user.id"
-              [userName]="user.userName" [email]="user.email"
+              [userName]="user.userName" [email]="user.email" [type]="user.type"
               [firstName]="user.firstName" [secondName]="user.secondName"
-              [age]="user.age" [group]="getGroupById(user.groupId)"
-              [allGroups]="groups">
+              [age]="user.age" [group]="getGroupById(user.groupId)">
     </usr-user>
-  </div>
 </mat-card>

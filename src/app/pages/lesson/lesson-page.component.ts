@@ -22,7 +22,7 @@ export class LessonPageComponent implements OnInit {
   }
 
   userTypes = UserType;
-  currentUserType: UserType = this.userService.getUserType();
+  currentUserType: UserType = this.userService.getCurrentUserType();
   lessonTypes = LessonStatus;
 
   ngOnInit() {

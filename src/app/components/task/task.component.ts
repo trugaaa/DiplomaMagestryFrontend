@@ -25,7 +25,7 @@ export class TaskComponent {
   currentUserType: UserType;
 
   constructor(private userService: UserService, private taskService: TaskService) {
-    this.currentUserType = userService.getUserType();
+    this.currentUserType = userService.getCurrentUserType();
   }
 
   submitAnswer() {

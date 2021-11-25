@@ -1,11 +1,42 @@
 <mat-card class="user">
   <div class="info">
-    <div>{{userName}}</div>
-    <div>{{secondName}}</div>
-    <div>{{group?.name}}</div>
+    <div class="column">
+      <mat-icon class="user-icon" *ngIf="type===userTypes.student" aria-hidden="false">account_circle</mat-icon>
+      <mat-icon class="user-icon" aria-hidden="false">admin_panel_settings</mat-icon>
+      <mat-icon class="user-icon" *ngIf="type===userTypes.admin" aria-hidden="false">admin_panel_settings</mat-icon>
+    </div>
+    <div class="column" [style.visibility]="secondName ? 'visible' : 'hidden'">
+      <span class="subtitle">Прізвище</span>
+      <div>{{secondName}}</div>
+    </div>
+    <div class="column"  [style.visibility]="firstName ? 'visible' : 'hidden'">
+      <span class="subtitle">Ім'я</span>
+      <div>{{firstName}}</div>
+    </div>
+    <div class="column">
+      <span class="subtitle">По батькові</span>
+      <div>Не реалізовано</div>
+    </div>
+    <div class="column">
+      <span class="subtitle">Ім'я користувача</span>
+      <div>{{userName}}</div>
+    </div>
+    <div class="column">
+      <span class="subtitle">Група</span>
+      <div>{{group?.name}}</div>
+    </div>
+    <div class="column">
+      <span class="subtitle">Курс</span>
+      <div>{{group?.courseNumber}}</div>
+    </div>
+    <div class="column">
+      <span class="subtitle">Тип користувача</span>
+      <div>Не реалізовано</div>
+    </div>
   </div>
 
-  <div class="user-actions">
+  <div *ngIf="type===userTypes.student && currentUser===userTypes.teacher || currentUser===userTypes.admin || currentUser===userTypes.teacher"
+       class="user-actions">
     <button (click)="changeGroup()" mat-raised-button color="primary">Змінити групу</button>
   </div>
 </mat-card>

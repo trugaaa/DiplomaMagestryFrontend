@@ -24,7 +24,7 @@ export class SubjectComponent {
               private changeDetection: ChangeDetectorRef,
               private subjectService: SubjectsService
   ) {
-    this.currentUser = userService.getUserType()
+    this.currentUser = userService.getCurrentUserType()
   }
 
   openLessonCreationDialog() {

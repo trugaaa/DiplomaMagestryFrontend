@@ -15,6 +15,7 @@
     <mat-card-title *ngIf="lesson?.mark" style="color: darkslategray">Результат: {{lesson!!.mark}}</mat-card-title>
     <mat-card-subtitle>{{lesson.description}}</mat-card-subtitle>
     </div>
+
     <div class="tasks-container">
       <ts-task *ngFor="let task of lesson?.tasks" [id]="task.id" [lessonStatus]="lesson?.status"
                [type]="task.type"

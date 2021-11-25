@@ -17,7 +17,7 @@ export class UserService {
   constructor(private cookieService: CookieService, private httpClient: HttpClient) {
   }
 
-  public getUserType(): UserType {
+  public getCurrentUserType(): UserType {
     //return this.cookieService.get("role") as UserType;
     return UserType.teacher;
   }

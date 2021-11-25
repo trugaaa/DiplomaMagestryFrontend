@@ -6,7 +6,7 @@
           <mat-icon>dashboard</mat-icon>
         </button>
         <span >Дипломна робота</span>
-        <button *ngIf="userService.getUserType()!==userTypes.student" mat-button color="white" (click)="goToUsersPage()">Користувачі</button>
+        <button *ngIf="userService.getCurrentUserType()!==userTypes.student" mat-button color="white" (click)="goToUsersPage()">Користувачі</button>
       </div>
     </div>
     <button mat-icon-button (click)="onLogout()">
