@@ -19,7 +19,7 @@ export class TaskCreationDialogComponent {
   }
 
   taskCreationForm = new FormGroup({
-    questionType: new FormControl(null, Validators.required),
+    selectedGroup: new FormControl(null, Validators.required),
     question: new FormControl("", Validators.required),
     answer: new FormControl("", Validators.required)
   });

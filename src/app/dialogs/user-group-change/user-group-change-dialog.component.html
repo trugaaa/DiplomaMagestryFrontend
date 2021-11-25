@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Оберіть нову групу користувача</h2>
+<form [formGroup]="groupSelectForm">
+  <div class="mat-typography dialog-box">
+    <mat-form-field  appearance="fill">
+      <mat-label>Вибрати групу</mat-label>
+      <mat-select formControlName="selectedGroup">
+        <mat-option [value]="">Не вибрано</mat-option>
+        <mat-option *ngFor="let group of allGroups" [value]="group.id">{{group.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+      <button mat-raised-button mat-dialog-close>Призначити групу</button>
+      <button mat-raised-button [disabled]='!groupSelectForm.valid' (click)="onGroupChange()"
+              color="primary" [mat-dialog-close]="true">
+        Створити
+      </button>
+    </mat-dialog-actions>
+  </div>
+</form>

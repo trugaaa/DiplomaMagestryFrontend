@@ -24,9 +24,10 @@
 </mat-card>
 
 <mat-card *ngIf="users" class="user-container">
-    <usr-user *ngFor="let user of users" [id]="user.id"
-              [userName]="user.userName" [email]="user.email" [type]="user.type"
-              [firstName]="user.firstName" [secondName]="user.secondName"
-              [age]="user.age" [group]="getGroupById(user.groupId)">
-    </usr-user>
+  <usr-user *ngFor="let user of users" [id]="user.id"
+            [userName]="user.userName" [email]="user.email" [type]="user.type"
+            [firstName]="user.firstName" [secondName]="user.secondName"
+            [age]="user.age" [group]="getGroupById(user.groupId)"
+            [allGroups]="groups">
+  </usr-user>
 </mat-card>
