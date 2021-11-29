@@ -26,6 +26,7 @@ export class UsersPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Users-page init")
     this.userService.getUsers().subscribe(response => {
       this.users = response
       this.changeDetection.detectChanges()

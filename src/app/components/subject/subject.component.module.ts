@@ -1,6 +1,5 @@
 import {Input, NgModule} from "@angular/core";
 import {SubjectComponent} from "./subject.component";
-import {MatCardModule} from "@angular/material/card";
 import {CommonModule} from "@angular/common";
 import {LessonCreationDialogModule} from "../../dialogs/lesson-creation/lesson-creation-dialog.module";
 import {MatSharedModule} from "../../shared/mat.shared.module";
@@ -10,10 +9,9 @@ import {MatSharedModule} from "../../shared/mat.shared.module";
         SubjectComponent
     ],
   imports: [
-    MatCardModule,
+    MatSharedModule,
     CommonModule,
     LessonCreationDialogModule,
-    MatSharedModule
   ],
     declarations: [SubjectComponent]
 })

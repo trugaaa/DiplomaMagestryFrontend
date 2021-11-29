@@ -12,13 +12,13 @@ import {GroupsService} from "../../services/groups.service";
   styleUrls: ["user-group-change-dialog.component.scss"]
 })
 export class UserGroupChangeDialogComponent {
-  userName: string
-  allGroups: Group[]
+  userName: string;
+  allGroups: Group[];
 
   constructor(
     private groupsService: GroupsService, @Inject(MAT_DIALOG_DATA) data: any) {
-    this.userName = data.userName
-    this.allGroups = data.allGroups
+    this.userName = data.userName;
+    this.allGroups = data.allGroups;
   }
 
   groupSelectForm = new FormGroup({
@@ -26,7 +26,8 @@ export class UserGroupChangeDialogComponent {
   });
 
   onGroupChange() {
-    console.log(this.userName)
-    console.log(this.groupSelectForm.controls['selectedGroup'].value)
+    this.groupsService.addUserToGroup(this.groupSelectForm.controls["selectedGroup"].value, this.userName).subscribe(() => {
+      window.location.reload();
+    })
   }
 }

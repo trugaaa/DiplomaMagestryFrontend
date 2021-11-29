@@ -1,0 +1,36 @@
+.groups-container {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+}
+
+.filters {
+  width: 100%;
+}
+
+.teacher {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+  padding: 16px 16px 16px 16px;
+  grid-gap: 8px;
+}
+
+.teacher-button {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex: 1;
+  grid-gap: 4px;
+}
+
+.mat-form-field {
+  font-size: 12px;
+  width: 100%;
+}
+
+button{
+  height: 100%;
+}

@@ -1,0 +1,36 @@
+.group {
+  display: flex;
+  flex-direction: row;
+  grid-gap: 8px;
+}
+
+.group-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  grid-gap: 8px;
+  width: 100%;
+}
+
+mat-card {
+  margin: 0 0 12px 0;
+}
+
+.column {
+  visibility: visible;
+  width: 100%;
+}
+
+.subtitle {
+  color: darkgrey;
+  font-size: 16px;
+}
+
+.user-icon{
+  font-size: 32px;
+}

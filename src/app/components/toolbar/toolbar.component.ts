@@ -24,4 +24,8 @@ export class ToolbarComponent {
   goToUsersPage() {
     this.router.navigate(["users"])
   }
+
+  goToGroupsPage() {
+    this.router.navigate(["groups"])
+  }
 }

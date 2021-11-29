@@ -7,6 +7,7 @@
         </button>
         <span >Дипломна робота</span>
         <button *ngIf="userService.getCurrentUserType()!==userTypes.student" mat-button color="white" (click)="goToUsersPage()">Користувачі</button>
+        <button *ngIf="userService.getCurrentUserType()!==userTypes.student" mat-button color="white" (click)="goToGroupsPage()">Групи</button>
       </div>
     </div>
     <button mat-icon-button (click)="onLogout()">

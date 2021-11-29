@@ -9,7 +9,7 @@ import {UserComponentModule} from "../../components/user/user.component.module";
   declarations: [UsersPageComponent],
   imports: [
     MatSharedModule,
-    RouterModule.forChild([{path: '**', component: UsersPageComponent}]),
+    RouterModule.forChild([{path: '', component: UsersPageComponent}]),
     ToolbarComponentModule,
     UserComponentModule
   ]

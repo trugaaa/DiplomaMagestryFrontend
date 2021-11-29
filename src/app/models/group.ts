@@ -1,5 +1,7 @@
+import {Course} from "./course";
+
 export interface Group {
-  id: string,
+  id?: string,
   name: string,
-  courseNumber: string
+  courseNumber: Course
 }

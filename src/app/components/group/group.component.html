@@ -1,0 +1,19 @@
+<mat-card class="group">
+  <div class="info">
+    <div class="column">
+      <span class="subtitle">ID</span>
+      <div>{{id}}</div>
+    </div>
+    <div class="column">
+      <span class="subtitle">Ім'я групи</span>
+      <div>{{name}}</div>
+    </div>
+    <div class="column">
+      <span class="subtitle">Курс</span>
+      <div>{{courseName}}</div>
+    </div>
+  </div>
+  <button mat-icon-button>
+    <mat-icon (click)="delete()" color="warn">delete</mat-icon>
+  </button>
+</mat-card>

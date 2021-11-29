@@ -1,0 +1,47 @@
+<toolbar-menu-main></toolbar-menu-main>
+
+<mat-card [formGroup]="groupCreationForm" class="teacher" *ngIf="userService.getCurrentUserType()!==userTypes.student">
+  <mat-form-field appearance="fill">
+    <mat-label>Ім'я групи</mat-label>
+    <input formControlName="name" matInput/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Курс</mat-label>
+    <mat-select formControlName="course">
+      <mat-option [value]="">Невідомо</mat-option>
+      <mat-option *ngFor="let course of courses" [value]="course">{{course}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="teacher-button">
+    <button [disabled]="!groupCreationForm.valid" (click)="createGroup()" mat-raised-button color="primary">Створити нову
+      групу
+    </button>
+  </div>
+</mat-card>
+
+<mat-card class="teacher" *ngIf="userService.getCurrentUserType()!==userTypes.student">
+  <mat-form-field [(ngModel)]="subName" appearance="fill">
+    <mat-label>Ім'я</mat-label>
+    <input matInput/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Курс</mat-label>
+    <mat-select [(ngModel)]="courseName">
+      <mat-option [value]="">Невідомо</mat-option>
+      <mat-option *ngFor="let course of courses" [value]="course">{{course}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="teacher-button">
+    <button (click)="filter()" mat-raised-button color="primary">Відсортувати</button>
+  </div>
+</mat-card>
+
+<mat-card *ngIf="groups" class="groups-container">
+  <grp-group *ngFor="let group of groups" [id]="group.id"
+             [name]="group.name" [courseName]="group.courseNumber">
+  </grp-group>
+</mat-card>
