@@ -1,7 +1,7 @@
 import {UserType} from "../services/user.service";
 
 export interface Token {
-  userRole: UserType
+  role: UserType
   token: string
 }
 

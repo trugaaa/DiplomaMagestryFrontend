@@ -4,12 +4,14 @@ import {AuthApiService} from "../../services/auth-api.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppCookieService} from "../../services/app-cookie.service";
 import {UserService} from "../../services/user.service";
+import {User} from "../../models/user";
 
 @Component({
   templateUrl: "login-page.component.html",
   styleUrls: ["login-page.component.scss"]
 })
 export class LoginPageComponent implements OnInit {
+
   constructor(private router: Router, private userService: UserService,
               private authApiService: AuthApiService, private cookieService: AppCookieService) {
   }
@@ -24,8 +26,9 @@ export class LoginPageComponent implements OnInit {
       userNameOrEmail: this.loginForm.controls["username"].value,
       password: this.loginForm.controls["password"].value
     }).subscribe(response => {
+      this.cookieService.setCookie("username", this.loginForm.controls["username"].value);
       this.cookieService.setCookie("token", response.token);
-      this.userService.setUserType(response.userRole);
+      this.userService.setUserType(response.role);
       this.router.navigate(["dashboard"]);
     });
   }

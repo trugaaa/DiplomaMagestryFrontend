@@ -3,7 +3,7 @@
     <mat-card-header class="header">
       <mat-card-title>{{question || 'Question question'}}</mat-card-title>
     </mat-card-header>
-    <button (click)="onTaskDelete()" mat-icon-button>
+    <button *ngIf="currentUserType!==userTypes.student" (click)="onTaskDelete()" mat-icon-button>
       <mat-icon>delete</mat-icon>
     </button>
   </div>
@@ -11,21 +11,22 @@
   <div>
     <mat-card-content>
       <mat-form-field *ngIf="type == taskType.code || type == taskType.text" class="task-content" appearance="fill">
-        <textarea matInput [disabled]="lessonStatus!=lessonStatuses.open" [value]='answer'></textarea>
+        <textarea [(ngModel)]="answer" matInput [disabled]="currentUserType!==userTypes.student" [value]='answer'></textarea>
       </mat-form-field>
       <mat-radio-group *ngIf="type == taskType.test && answers"
                        aria-labelledby="example-radio-group-label"
                        class="task-content example-radio-group"
                        [disabled]="lessonStatus!=lessonStatuses.open"
+                       [(ngModel)]="selected"
                        [value]="selected">
         <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer">
           {{answer}}
         </mat-radio-button>
       </mat-radio-group>
     </mat-card-content>
-    <div *ngIf="lessonStatus==lessonStatuses.open" class="manage">
-      <div>
-        <button (click)="submitAnswer()" mat-raised-button color="primary">Submit answer</button>
+    <div class="manage">
+      <div style="margin-right: 12px" *ngIf="currentUserType===userTypes.student">
+        <button (click)="submitAnswer()" mat-raised-button color="primary">Підтвердити відповідь</button>
       </div>
       <div>
         <button mat-icon-button (click)="openChat()">

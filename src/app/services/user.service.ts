@@ -2,10 +2,8 @@ import {Injectable} from "@angular/core";
 import {CookieService} from "ngx-cookie-service";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
-import {Subject} from "../models/subject";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
-import {group} from "@angular/animations";
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +16,7 @@ export class UserService {
   }
 
   public getCurrentUserType(): UserType {
-    //return this.cookieService.get("role") as UserType;
-    return UserType.teacher;
+    return this.cookieService.get("role") as UserType;
   }
 
   public setUserType(userType: UserType) {
@@ -36,7 +33,7 @@ export class UserService {
 }
 
 export enum UserType {
-  student = "student",
-  teacher = "teacher",
-  admin = "admin"
+  student = "Student",
+  teacher = "Teacher",
+  admin = "Admin"
 }

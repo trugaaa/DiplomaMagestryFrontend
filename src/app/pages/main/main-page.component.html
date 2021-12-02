@@ -1,5 +1,5 @@
 <toolbar-menu-main></toolbar-menu-main>
-<mat-card class="teacher" *ngIf="currentUserType==userTypes.teacher">
+<mat-card class="teacher">
   <div class="filters">
     <mat-form-field appearance="fill">
       <mat-label>Назва предмета</mat-label>
@@ -9,7 +9,7 @@
 
   <div class="teacher-button">
     <button (click)="filterBySubName()" mat-raised-button color="primary">Відсортувати</button>
-    <button (click)="openCreationDialog()" mat-raised-button color="primary">Додати новий предмет</button>
+    <button *ngIf="currentUserType==userTypes.teacher" (click)="openCreationDialog()" mat-raised-button color="primary">Додати новий предмет</button>
   </div>
 </mat-card>
 

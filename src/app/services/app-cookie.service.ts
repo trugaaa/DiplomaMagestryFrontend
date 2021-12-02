@@ -22,6 +22,9 @@ export class AppCookieService {
   }
 
   deleteAllCookie(){
+    this.cookieService.delete("username");
+    this.cookieService.delete("role");
+    this.cookieService.delete("token");
     this.cookieService.deleteAll()
   }
 }

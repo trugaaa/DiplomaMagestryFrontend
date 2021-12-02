@@ -63,7 +63,7 @@ export class RegistrationPageComponent {
         }).subscribe(
           response => {
             this.cookieService.setCookie("token", response.token)
-            this.userService.setUserType(response.userRole)
+            this.userService.setUserType(response.role)
             this.router.navigate(["dashboard"])
           }, error => {
             console.log(error.statusCode)

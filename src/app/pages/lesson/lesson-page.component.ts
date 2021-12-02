@@ -7,37 +7,77 @@ import {UserService, UserType} from "../../services/user.service";
 import {LessonService} from "../../services/lesson.service";
 import {SubjectsService} from "../../services/subjects.service";
 import {Subject} from "../../models/subject";
+import {LessonAssignUserDialogModule} from "../../dialogs/lesson-assign-user/lesson-assign-user-dialog.module";
+import {LessonAssignUserDialogComponent} from "../../dialogs/lesson-assign-user/lesson-assign-user-dialog.component";
+import {User} from "../../models/user";
+import {TaskService} from "../../services/task.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
-  templateUrl: "lesson-page.component.html",
-  styleUrls: ["lesson-page.component.scss"]
+    templateUrl: "lesson-page.component.html",
+    styleUrls: ["lesson-page.component.scss"]
 })
 export class LessonPageComponent implements OnInit {
-  public subject?: Subject;
-  public lesson?: LessonFull;
+    public subject?: Subject;
+    public lesson?: LessonFull;
+    users?: User[];
+    selectedUser: string = "";
 
-  constructor(private activeRoute: ActivatedRoute, private userService: UserService,
-              public dialog: MatDialog, private changeDetection: ChangeDetectorRef,
-              private lessonService: LessonService, private subjectService: SubjectsService) {
-  }
+    constructor(private activeRoute: ActivatedRoute, private userService: UserService,
+                private taskService: TaskService,
+                public dialog: MatDialog, private changeDetection: ChangeDetectorRef,
+                private lessonService: LessonService, private subjectService: SubjectsService,
+                private cookieService: CookieService) {
+    }
 
-  userTypes = UserType;
-  currentUserType: UserType = this.userService.getCurrentUserType();
-  lessonTypes = LessonStatus;
+    userTypes = UserType;
+    currentUserType: UserType = this.userService.getCurrentUserType();
+    lessonTypes = LessonStatus;
 
-  ngOnInit() {
-    this.subjectService.getSubject(this.activeRoute.snapshot.paramMap.get("subjectId")).subscribe(response => {
-      this.subject = response[0];
-    });
+    ngOnInit() {
+        if (this.userService.getCurrentUserType() === this.userTypes.teacher) {
+            this.userService.getUsers().subscribe(response => {
+                this.users = response;
+                this.changeDetection.detectChanges();
+            });
+        }
 
-    this.lessonService.getLesson(this.activeRoute.snapshot.paramMap.get("lessonId")).subscribe(response => {
-      this.lesson = response[0];
-      console.log(response)
-      this.changeDetection.detectChanges();
-    });
-  }
+        this.subjectService.getSubject(this.activeRoute.snapshot.paramMap.get("subjectId")).subscribe(response => {
+            this.subject = response[0];
+        });
 
-  openTaskCreationDialog() {
-    this.dialog.open(TaskCreationDialogComponent, {data: {id: this.lesson?.id}});
-  }
+        this.lessonService.getLesson(this.activeRoute.snapshot.paramMap.get("lessonId")).subscribe(response => {
+            this.lesson = response[0];
+            this.changeDetection.detectChanges();
+        });
+
+        if (this.currentUserType !== this.userTypes.teacher) {
+            this.taskService.getTasksInfos(this.activeRoute.snapshot.paramMap.get("lessonId"),
+                this.cookieService.get("username")).subscribe(response => {
+                console.log(response)
+                console.log(this.lesson!.tasks)
+                this.lesson!.tasks = response;
+                console.log(this.lesson!.tasks)
+                this.changeDetection.detectChanges();
+            })
+        }
+    }
+
+    openTaskCreationDialog() {
+        this.dialog.open(TaskCreationDialogComponent, {data: {id: this.lesson?.id}});
+    }
+
+    openAssignUserDialog() {
+        this.dialog.open(LessonAssignUserDialogComponent, {data: {subjectId: this.subject!.id}});
+    }
+
+    selectUser() {
+        if (this.selectedUser !== undefined) {
+            this.taskService.getTasksInfos(this.activeRoute.snapshot.paramMap.get("lessonId"),
+                this.selectedUser).subscribe(response => {
+                this.lesson!.tasks = response;
+                this.changeDetection.detectChanges();
+            })
+        }
+    }
 }

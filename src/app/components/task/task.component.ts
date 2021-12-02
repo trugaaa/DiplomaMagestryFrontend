@@ -11,6 +11,7 @@ import {TaskService} from "../../services/task.service";
 })
 export class TaskComponent {
   @Input() id?: string;
+  @Input() taskInfoId?: string;
   @Input() lessonStatus?: LessonStatus;
   @Input() question?: string;
   @Input() type?: TaskType;
@@ -29,7 +30,10 @@ export class TaskComponent {
   }
 
   submitAnswer() {
-
+    console.log(this.taskInfoId)
+    console.log(this.answer)
+    this.taskService.submitAnswer(this.taskInfoId, this.answer).subscribe(() => {
+    });
   }
 
   openChat() {

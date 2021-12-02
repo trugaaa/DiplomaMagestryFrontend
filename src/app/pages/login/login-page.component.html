@@ -1,25 +1,25 @@
 <div class="login" [formGroup]="loginForm">
-  <span class="header">Sign in</span>
+  <span class="header">Авторизація</span>
 
   <mat-form-field appearance="fill">
-    <mat-label>Username/Email</mat-label>
+    <mat-label>Ім'я  користувача/Електронна адреса</mat-label>
     <input formControlName="username" matInput>
     <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
-      Username is <strong>required</strong>
+      Поле обов'язкове для заповнення
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
+    <mat-label>Пароль</mat-label>
     <input type="password" formControlName="password" matInput>
     <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-      Password is <strong>required</strong>
+      Поле обов'язкове для заповнення
     </mat-error>
   </mat-form-field>
 
-  <button [disabled]="!loginForm.valid" mat-stroked-button color="primary"
-          (click)="onLogin()">Sign In
+  <button mat-stroked-button [disabled]="!loginForm.valid" color="primary"
+          (click)="onLogin()">Увійти
   </button>
 
-  <a mat-button class="link" href="/registration">Dont have account? Sign Up</a>
+  <a mat-button class="link" href="/registration">Не маєте облікового запису? Реєстрація</a>
 </div>

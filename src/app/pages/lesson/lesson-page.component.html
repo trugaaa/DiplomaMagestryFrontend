@@ -1,8 +1,22 @@
 <toolbar-menu-main></toolbar-menu-main>
-<div class="teacher" *ngIf="currentUserType==userTypes.teacher">
-  <!-- && lesson?.status === lessonTypes.open-->
-  <button (click)="openTaskCreationDialog()" mat-raised-button color="primary">Додати завдання</button>
-</div>
+<mat-card class="teacher" *ngIf="currentUserType==userTypes.teacher">
+  <div class="buttons">
+    <button (click)="openTaskCreationDialog()" mat-raised-button color="primary">Додати завдання</button>
+    <button (click)="openAssignUserDialog()" mat-raised-button color="primary">Дати доступ користувачу</button>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Виберіть виконавця роботи</mat-label>
+    <mat-select [(ngModel)]="selectedUser" (ngModelChange)="selectUser()">
+      <mat-option>
+        Невідомо
+      </mat-option>
+      <mat-option *ngFor="let user of users" [value]="user.userName">
+        {{user.firstName + " " + user.secondName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+
 <div class="lesson-page">
   <mat-card>
     <div *ngIf="subject" class="subject-info">
@@ -11,17 +25,21 @@
     </div>
 
     <div class="card" *ngIf="lesson">
-    <mat-card-title>Тема: {{lesson.name}}</mat-card-title>
-    <mat-card-title *ngIf="lesson?.mark" style="color: darkslategray">Результат: {{lesson!!.mark}}</mat-card-title>
-    <mat-card-subtitle>{{lesson.description}}</mat-card-subtitle>
+      <mat-card-title>Тема: {{lesson.name}}</mat-card-title>
+      <mat-card-title *ngIf="lesson?.mark" style="color: darkslategray">Результат: {{lesson!!.mark}}</mat-card-title>
+      <mat-card-subtitle>{{lesson.description}}</mat-card-subtitle>
     </div>
 
     <div class="tasks-container">
-      <ts-task *ngFor="let task of lesson?.tasks" [id]="task.id" [lessonStatus]="lesson?.status"
+      <ts-task *ngFor="let task of lesson?.tasks"
+               [id]='task.id || task.taskId'
+               [taskInfoId]='task.taskInfoId || ""'
+               [lessonStatus]="lesson?.status"
                [type]="task.type"
-               [question]="task.question"
-               [answer]="task.answer"
-               [answers]="task.answers" [selected]="task.selected"></ts-task>
+               [question]='task.question || ""'
+               [answer]='task.answer || ""'
+               [answers]='task.answers || []'
+               [selected]='task.selected || ""'></ts-task>
     </div>
   </mat-card>
 </div>

@@ -27,7 +27,6 @@ export class MainPageComponent implements OnInit {
 
   filterBySubName() {
     this.subjectService.getSubjectsBySubName(this.subName).subscribe(response => {
-      console.log(response)
       this.subjectsResponse = response
       this.changeDetection.detectChanges();
     });
@@ -35,7 +34,6 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.subjectService.getSubjects().subscribe(response => {
-      console.log(response)
       this.subjectsResponse = response
       this.changeDetection.detectChanges();
     })

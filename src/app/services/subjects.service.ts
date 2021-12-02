@@ -31,4 +31,11 @@ export class SubjectsService {
   deleteSubject(id: string | undefined): Observable<any> {
     return this.httpClient.delete<any>(this.env.url + this.api + "/" + id)
   }
+
+  assigneeUser(subjectId: string, username: string): Observable<any> {
+    return this.httpClient.post<any>(this.env.url + this.api + "/assignUsers", {
+      subjectId: subjectId,
+      userNames: [username]
+    })
+  }
 }

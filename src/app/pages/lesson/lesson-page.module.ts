@@ -12,7 +12,7 @@ import {ToolbarComponentModule} from "../../components/toolbar/toolbar.component
           MatSharedModule,
           RouterModule.forChild([{path: '**', component: LessonPageComponent}]),
           TaskComponentModule,
-          ToolbarComponentModule
+          ToolbarComponentModule,
       ]
   }
 )

@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Видати доступ користувачу до роботи</h2>
+<div class="mat-typography dialog-box">
+  <mat-form-field appearance="fill">
+    <mat-label>Оберіть тип завдання</mat-label>
+    <mat-select [(ngModel)]="userSelected">
+      <mat-option>
+        Невідомо
+      </mat-option>
+      <mat-option *ngFor="let user of users" [value]="user.userName">
+        {{user.firstName + " " + user.secondName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Закрити</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [mat-dialog-close]="true">Дати доступ</button>
+  </mat-dialog-actions>
+</div>
