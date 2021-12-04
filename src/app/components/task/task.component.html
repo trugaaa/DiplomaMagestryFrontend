@@ -3,7 +3,7 @@
     <mat-card-header class="header">
       <mat-card-title>{{question || 'Question question'}}</mat-card-title>
     </mat-card-header>
-    <button *ngIf="currentUserType!==userTypes.student" (click)="onTaskDelete()" mat-icon-button>
+    <button *ngIf="currentUserType!==userTypes.student && !selectedUsername" (click)="onTaskDelete()" mat-icon-button>
       <mat-icon>delete</mat-icon>
     </button>
   </div>
@@ -24,11 +24,12 @@
         </mat-radio-button>
       </mat-radio-group>
     </mat-card-content>
+
     <div class="manage">
       <div style="margin-right: 12px" *ngIf="currentUserType===userTypes.student">
         <button (click)="submitAnswer()" mat-raised-button color="primary">Підтвердити відповідь</button>
       </div>
-      <div>
+      <div *ngIf="currentUserType===userTypes.student || selectedUsername">
         <button mat-icon-button (click)="openChat()">
           <mat-icon class="comment">comment</mat-icon>
         </button>

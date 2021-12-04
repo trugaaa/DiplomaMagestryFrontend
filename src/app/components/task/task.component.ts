@@ -1,8 +1,10 @@
-import {Component, Input} from "@angular/core";
+import {ChangeDetectorRef, Component, Input} from "@angular/core";
 import {TaskType} from "../../models/task";
 import {LessonStatus} from "../../models/lesson";
 import {UserService, UserType} from "../../services/user.service";
 import {TaskService} from "../../services/task.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ChatComponent} from "../../dialogs/chat/chat.component";
 
 @Component({
   selector: "ts-task",
@@ -18,6 +20,7 @@ export class TaskComponent {
   @Input() answer?: string;
   @Input() answers?: string[] | undefined | null;
   @Input() selected?: string | undefined | null;
+  @Input() selectedUsername?: string;
 
   taskType = TaskType;
   lessonStatuses = LessonStatus;
@@ -25,19 +28,20 @@ export class TaskComponent {
 
   currentUserType: UserType;
 
-  constructor(private userService: UserService, private taskService: TaskService) {
+  constructor(private userService: UserService,
+              private taskService: TaskService,
+              public dialog: MatDialog,
+              private changeDetection: ChangeDetectorRef) {
     this.currentUserType = userService.getCurrentUserType();
   }
 
   submitAnswer() {
-    console.log(this.taskInfoId)
-    console.log(this.answer)
     this.taskService.submitAnswer(this.taskInfoId, this.answer).subscribe(() => {
     });
   }
 
   openChat() {
-
+    this.dialog.open(ChatComponent, {data: {id: this.id, selectedUsername: this.selectedUsername}});
   }
 
   onTaskDelete() {

@@ -39,10 +39,6 @@ export class GroupsPageComponent implements OnInit {
   }
 
   createGroup() {
-    console.log({
-      name: this.groupCreationForm.controls["name"].value,
-      courseNumber: this.groupCreationForm.controls["course"].value
-    })
     this.groupsService.createGroup({
       name: this.groupCreationForm.controls["name"].value,
       courseNumber: this.groupCreationForm.controls["course"].value

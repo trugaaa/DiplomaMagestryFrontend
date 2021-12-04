@@ -3,6 +3,7 @@ import {UserService, UserType} from "../../services/user.service";
 import {MatDialog} from "@angular/material/dialog";
 import {LessonCreationDialogComponent} from "../../dialogs/lesson-creation/lesson-creation-dialog.component";
 import {SubjectsService} from "../../services/subjects.service";
+import {LessonAssignUserDialogComponent} from "../../dialogs/lesson-assign-user/lesson-assign-user-dialog.component";
 
 @Component({
   selector: "sb-subject",
@@ -37,5 +38,9 @@ export class SubjectComponent {
         window.location.reload();
       }
     )
+  }
+
+  assignUserToSubject(){
+    this.dialog.open(LessonAssignUserDialogComponent, {data: {subjectId: this.id}});
   }
 }
