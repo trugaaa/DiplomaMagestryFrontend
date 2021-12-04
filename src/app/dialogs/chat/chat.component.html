@@ -1,6 +1,23 @@
-<div>
-  <msg-chat *ngFor="let chatMessage of chatMessages"
-            [sender]="chatMessage.sender"
-            [message]="chatMessage.message">
-  </msg-chat>
+<div class="chat-window">
+  <div class="chat-header">
+    <h2 mat-dialog-title>Чат щодо завдання</h2>
+    <button mat-icon-button>
+      <mat-icon mat-dialog-close color="primary">close</mat-icon>
+    </button>
+  </div>
+  <div class="messages">
+    <msg-chat *ngFor="let chatMessage of chatMessages"
+              [sender]="chatMessage.sender"
+              [message]="chatMessage.message">
+    </msg-chat>
+  </div>
+  <div class="input-message">
+    <mat-form-field appearance="fill">
+      <mat-label>Ввести повідомлення</mat-label>
+      <input matInput/>
+    </mat-form-field>
+    <button mat-icon-button>
+      <mat-icon  color="primary">send</mat-icon>
+    </button>
+  </div>
 </div>

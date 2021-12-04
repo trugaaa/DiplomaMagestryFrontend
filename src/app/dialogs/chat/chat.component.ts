@@ -1,6 +1,7 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from "@angular/core";
 import {AppCookieService} from "../../services/app-cookie.service";
 import {ChatMessage} from "../../models/chat";
+import {ChatWebsocketService} from "../../services/chat.websocket.service";
 
 @Component({
   selector: "chat-dialog",
@@ -12,20 +13,22 @@ export class ChatComponent implements OnInit, OnDestroy {
   currentUsername: string;
 
   constructor(public cookieService: AppCookieService,
-              private changeDetection: ChangeDetectorRef) {
+              private changeDetection: ChangeDetectorRef,
+ //             private websocketService: ChatWebsocketService
+  ) {
     this.chatMessages = [];
     this.currentUsername = cookieService.getCookie("username");
 
     console.log(cookieService.getCookie("token"))
     console.log(cookieService.getCookie("username"))
     console.log(this.chatMessages);
-
   }
 
   ngOnInit() {
+ //   this.websocketService.openConnection();
   }
 
   ngOnDestroy() {
-    //close connection
+ //   this.websocketService.closeConnection();
   }
 }
