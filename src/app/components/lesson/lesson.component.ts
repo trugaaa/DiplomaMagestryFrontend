@@ -1,8 +1,7 @@
 import {ChangeDetectorRef, Component, Input} from "@angular/core";
 import {Router} from "@angular/router";
 import {LessonService} from "../../services/lesson.service";
-import {UserService} from "../../services/user.service";
-import {DateFormat} from "../../services/date.format";
+import {UserService, UserType} from "../../services/user.service";
 
 @Component({
   selector: "ls-lesson",
@@ -17,14 +16,16 @@ export class LessonComponent {
   @Input() validTill?: string;
   @Input() description?: string;
 
+  userTypes = UserType;
+
   constructor(private router: Router,
               private lessonService: LessonService,
-              private userService: UserService,
+              public userService: UserService,
               private changeDetection: ChangeDetectorRef) {
   }
 
   goToLesson() {
-    this.router.navigate([`subject/${this.subjectId}/lesson/${this.id}`]);
+    this.router.navigate([`subject/${this.subjectId}/lesson/${this.id}`]).then(() => {});
   }
 
   deleteLesson() {
@@ -32,9 +33,5 @@ export class LessonComponent {
       window.location.reload();
       this.changeDetection.detectChanges()
     });
-  }
-
-  transformDate(): string {
-    return DateFormat.transformDate(this.validTill!)
   }
 }

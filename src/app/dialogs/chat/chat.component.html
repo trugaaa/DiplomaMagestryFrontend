@@ -1,41 +1,6 @@
-<input type="text" id="token" placeholder="token">
-<input type="number" placeholder="taskInfoId" id="infoId">
-<input type="text" placeholder="studentName" id="studentName">
-<input type="text" placeholder="message" id="message">
-<input type="button" placeholder="Send" id="send" value="Send">
-<input type="button" placeholder="Connect" id="connect" value="Connect">
-<div id="chatroom"></div>
-
-<script src="node_modules/@microsoft/signalr/dist/browser/signalr.min.js"></script>
-<script>
-  let token;
-
-  hubConnection.on("ReceiveMessage", function (sender, message){
-    //let token = document.getElementById("token").textContent;
-    let userNameElem = document.createElement("b");
-    userNameElem.appendChild(document.createTextNode(sender+ ": "));
-
-    let elem = document.createElement("p");
-    elem.appendChild(userNameElem);
-    elem.appendChild(document.createTextNode(message));
-
-    var firstElem = document.getElementById("chatroom").firstChild;
-    document.getElementById("chatroom").insertBefore(elem, firstElem);
-  })
-
-  document.getElementById("connect").addEventListener("click", function (e){
-    hubConnection.start({withCredentials: false})
-      .catch(err=>{
-        console.error(err.toString());
-      })
-  })
-
-  document.getElementById("send").addEventListener("click", function (e) {
-    let message = document.getElementById("message").value;
-    let taskInfoId = document.getElementById("infoId").value;
-    let studentUserName = document.getElementById("studentName").value;
-    hubConnection.invoke("Subscribe", parseInt(taskInfoId), studentUserName)
-    hubConnection.invoke("Send", parseInt(taskInfoId), studentUserName, message);
-  });
-
-</script>
+<div>
+  <msg-chat *ngFor="let chatMessage of chatMessages"
+            [sender]="chatMessage.sender"
+            [message]="chatMessage.message">
+  </msg-chat>
+</div>

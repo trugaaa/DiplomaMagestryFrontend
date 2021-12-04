@@ -7,7 +7,7 @@
       <button mat-icon-button (click)="goToLesson()">
         <mat-icon>open_in_new</mat-icon>
       </button>
-      <button mat-icon-button (click)="deleteLesson()">
+      <button *ngIf="userService.getCurrentUserType()!==userTypes.student" mat-icon-button (click)="deleteLesson()">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
