@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, OnDestroy, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {AppCookieService} from "../../services/app-cookie.service";
 import {ChatMessage} from "../../models/chat";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   chatMessages: ChatMessage[];
   currentUsername: string;
   taskInfoId: string;
-  communicatorUsername: string = "";
+  communicatorUsername: string;
 
   socket;
   inputtedMessage: string = "";
@@ -47,7 +47,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.chatMessages.push({sender: sender, message: message})
       changeDetection.detectChanges();
     })
-
   }
 
   ngOnInit() {
@@ -56,6 +55,9 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.socket.invoke("Subscribe", parseInt(this.taskInfoId), this.communicatorUsername);
       }
     ).catch(err => console.log(err));
+
+    window.document.getElementById("chat")!.scrollTop
+      = window.document.getElementById("chat")!.scrollHeight;
   }
 
   onSent() {

@@ -5,15 +5,17 @@ import {ChatComponent} from "./chat.component";
 import {MessageChatComponentModule} from "../../components/message.chat/message.chat.module";
 
 @NgModule({
-  declarations: [ChatComponent],
+  declarations: [
+    ChatComponent
+  ],
   exports: [
     ChatComponent
   ],
-    imports: [
-        MatSharedModule,
-        ReactiveFormsModule,
-        MessageChatComponentModule
-    ]
+  imports: [
+    MatSharedModule,
+    ReactiveFormsModule,
+    MessageChatComponentModule
+  ]
 })
 export class ChatModule {
 }
