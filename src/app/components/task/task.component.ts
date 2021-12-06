@@ -5,6 +5,7 @@ import {UserService, UserType} from "../../services/user.service";
 import {TaskService} from "../../services/task.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ChatComponent} from "../../dialogs/chat/chat.component";
+import {ChatMessage} from "../../models/chat";
 
 @Component({
   selector: "ts-task",
@@ -21,6 +22,7 @@ export class TaskComponent {
   @Input() answers?: string[] | undefined | null;
   @Input() selected?: string | undefined | null;
   @Input() selectedUsername?: string;
+  @Input() commentsHistory?: ChatMessage[];
 
   taskType = TaskType;
   lessonStatuses = LessonStatus;
@@ -30,8 +32,7 @@ export class TaskComponent {
 
   constructor(private userService: UserService,
               private taskService: TaskService,
-              public dialog: MatDialog,
-              private changeDetection: ChangeDetectorRef) {
+              public dialog: MatDialog) {
     this.currentUserType = userService.getCurrentUserType();
   }
 
@@ -41,7 +42,13 @@ export class TaskComponent {
   }
 
   openChat() {
-    this.dialog.open(ChatComponent, {data: {id: this.id, selectedUsername: this.selectedUsername}});
+    this.dialog.open(ChatComponent, {
+      data: {
+        taskInfoId: this.taskInfoId,
+        selectedUsername: this.selectedUsername,
+        messagesHistory: this.commentsHistory
+      }
+    });
   }
 
   onTaskDelete() {

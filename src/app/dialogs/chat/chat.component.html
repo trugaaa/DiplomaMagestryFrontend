@@ -14,10 +14,10 @@
   <div class="input-message">
     <mat-form-field appearance="fill">
       <mat-label>Ввести повідомлення</mat-label>
-      <input matInput/>
+      <input [(ngModel)]="inputtedMessage" matInput/>
     </mat-form-field>
     <button mat-icon-button>
-      <mat-icon  color="primary">send</mat-icon>
+      <mat-icon (click)="onSent()" color="primary">send</mat-icon>
     </button>
   </div>
 </div>

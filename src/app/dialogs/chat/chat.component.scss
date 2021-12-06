@@ -11,10 +11,11 @@
 }
 
 .messages {
+  margin: 8px 16px;
   height: 400px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .input-message {

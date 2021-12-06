@@ -15,7 +15,6 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   imports: [

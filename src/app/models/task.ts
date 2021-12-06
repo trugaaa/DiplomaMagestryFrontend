@@ -1,3 +1,5 @@
+import {ChatMessage} from "./chat";
+
 export interface Task {
   id?: string,
   taskId?: string,
@@ -8,7 +10,7 @@ export interface Task {
   answer?: string | null,
   answers?: string[] | null,
   selected?: string | null,
-  comments?: string[] | null
+  comments?: ChatMessage[] | null
 }
 
 export enum TaskType {

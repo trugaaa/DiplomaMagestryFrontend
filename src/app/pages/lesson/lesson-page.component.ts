@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
-import {LessonFull, LessonStatus} from "../../models/lesson";
+import {LessonFull} from "../../models/lesson";
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskCreationDialogComponent} from "../../dialogs/task-creation/task-creation-dialog.component";
@@ -11,6 +11,7 @@ import {LessonAssignUserDialogComponent} from "../../dialogs/lesson-assign-user/
 import {User} from "../../models/user";
 import {TaskService} from "../../services/task.service";
 import {CookieService} from "ngx-cookie-service";
+import {ChatComponent} from "../../dialogs/chat/chat.component";
 
 @Component({
   templateUrl: "lesson-page.component.html",
@@ -31,7 +32,6 @@ export class LessonPageComponent implements OnInit {
 
   userTypes = UserType;
   currentUserType: UserType = this.userService.getCurrentUserType();
-  lessonTypes = LessonStatus;
 
   ngOnInit() {
     if (this.userService.getCurrentUserType() === this.userTypes.teacher) {
